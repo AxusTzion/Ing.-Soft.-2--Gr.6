@@ -5,6 +5,9 @@ import {FormControl, FormsModule, ReactiveFormsModule, Validators} from "@angula
 import {MatInputModule} from "@angular/material/input";
 import {merge} from 'rxjs';
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-cliente-create',
@@ -13,20 +16,29 @@ import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
     MatFormField,
     MatIcon,
     ReactiveFormsModule,
-    MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule
+    MatNativeDateModule,
+    MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule,
+    MatDatepickerModule
   ],
   templateUrl: './cliente-create.component.html',
   styleUrl: './cliente-create.component.css'
 })
 export class ClienteCreateComponent {
   email = new FormControl('', [Validators.required, Validators.email]);
-
+  formattedAmount: any;
+  amount : any;
   errorMessage = '';
 
-  constructor() {
+  constructor(private currencyPipe : CurrencyPipe) {
     merge(this.email.statusChanges, this.email.valueChanges)
       .pipe(takeUntilDestroyed())
       .subscribe(() => this.updateErrorMessage());
+  }
+
+  transformAmount(element: any){
+    this.formattedAmount = this.currencyPipe.transform(this.formattedAmount, '$');
+
+    element.target.value = this.formattedAmount;
   }
 
   updateErrorMessage() {

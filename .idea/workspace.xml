@@ -4,29 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c10a283-d49a-4fee-ba6d-50cfc4522d94" name="Changes" comment="Añadí application.properties para conectar a la base de datos">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/ucentral/CreditAplication/CreditAplicationApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/ucentral/CreditAplication/controllers/ClienteControlador.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/ucentral/CreditAplication/controllers/CreditoControlador.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/ucentral/CreditAplication/controllers/PagosControlador.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/ucentral/CreditAplication/models/Cliente.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/ucentral/CreditAplication/models/Credito.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/ucentral/CreditAplication/models/Pagos.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/ucentral/CreditAplication/models/TipoCredito.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/ucentral/CreditAplication/repositories/ClienteRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/ucentral/CreditAplication/repositories/CreditoRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/ucentral/CreditAplication/repositories/PagosRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/ucentral/CreditAplication/services/ClienteService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/ucentral/CreditAplication/services/CreditoService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/ucentral/CreditAplication/services/PagosService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/co/ucentral/CreditAplication/CreditAplicationApplicationTests.java" beforeDir="false" />
+    <list default="true" id="1c10a283-d49a-4fee-ba6d-50cfc4522d94" name="Changes" comment="Add front end">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/credit-application/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/credit-application/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/credit-application/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/credit-application/src/app/app.routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/credit-application/src/app/clientes/cliente-create/cliente-create.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/credit-application/src/app/clientes/cliente-create/cliente-create.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/credit-application/src/app/clientes/cliente-create/cliente-create.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/credit-application/src/app/clientes/cliente-create/cliente-create.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/credit-application/src/app/clientes/cliente-create/cliente-create.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/credit-application/src/app/clientes/cliente-create/cliente-create.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +29,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/add-edit-entity-credito-pagos" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -95,7 +79,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.CreditAplicationApplication.executor": "Run",
-    "git-widget-placeholder": "develop",
+    "git-widget-placeholder": "feature/add-front-end",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/jcvel/OneDrive/Escritorio/clases/INg. Soft 2/apl/CreditAplication",
     "node.js.detected.package.eslint": "true",
@@ -103,7 +87,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Users\\jcvel\\OneDrive\\Escritorio\\clases\\INg. Soft 2\\apl\\CreditAplication\\frontend\\credit-application\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2023.3.3\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -136,7 +120,8 @@
       <workItem from="1712101254994" duration="4889000" />
       <workItem from="1712107439028" duration="3128000" />
       <workItem from="1712280156897" duration="2661000" />
-      <workItem from="1712713214435" duration="1425000" />
+      <workItem from="1712713214435" duration="2313000" />
+      <workItem from="1712884880227" duration="2755000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -162,7 +147,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712283078062</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Add front end">
+      <option name="closed" value="true" />
+      <created>1712715865423</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1712715865423</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -199,7 +192,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="develop" />
+                        <option value="feature/add-edit-entity-credito-pagos" />
                       </list>
                     </value>
                   </entry>
@@ -214,6 +207,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit" />
     <MESSAGE value="Añadí application.properties para conectar a la base de datos" />
-    <option name="LAST_COMMIT_MESSAGE" value="Añadí application.properties para conectar a la base de datos" />
+    <MESSAGE value="Add front end" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add front end" />
   </component>
 </project>
