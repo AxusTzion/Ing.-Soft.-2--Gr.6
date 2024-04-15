@@ -1,0 +1,50 @@
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <mat-label>Numero de Identificacion</mat-label>
+    <input matInput  value="">
+  </mat-form-field>
+
+  <table class="example-full-width" cellspacing="0"><tr>
+    <td><mat-form-field class="example-full-width">
+      <mat-label>Nombre</mat-label>
+      <input matInput>
+    </mat-form-field></td>
+    <td><mat-form-field class="example-full-width">
+      <mat-label>Apellido</mat-label>
+      <input matInput>
+    </mat-form-field></td>
+  </tr></table>
+
+  <p>
+    <mat-form-field class="example-full-width">
+      <mat-label>Dirección</mat-label>
+      <textarea matInput placeholder="Ej. 100 Main St"></textarea>
+    </mat-form-field>
+  </p>
+  <mat-form-field class="example-full-width">
+    <mat-label>Ciudad</mat-label>
+    <input matInput placeholder="Ej. Bogotá">
+  </mat-form-field>
+
+  <table class="example-full-width" cellspacing="0"><tr>
+    <td>  <mat-form-field>
+      <mat-label>Fecha de nacimiento</mat-label>
+      <input matInput [matDatepicker]="picker">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field></td>
+
+    <td><mat-form-field class="example-full-width">
+      <mat-label>Numero telefonico</mat-label>
+      <input matInput placeholder="Ej. San Francisco">
+    </mat-form-field></td>
+  </tr>
+  </table>
+  <mat-form-field class="example-full-width">
+    <mat-label>Ingresos</mat-label>
+    <input type="text" (blur)="transformAmount($event)" [(ngModel)]="formattedAmount"  />
+    <input matInput placeholder="1.000.000" />
+  </mat-form-field>
+  <br>
+</form>
