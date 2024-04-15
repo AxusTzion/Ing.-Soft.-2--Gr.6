@@ -8,6 +8,9 @@ import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { CurrencyPipe } from '@angular/common';
+import {MatButtonModule} from '@angular/material/button';
+import { ServiceCreditApplicationService } from '../../service/service-credit-application.service';
+import { Client } from '../../Modelos/Client';
 
 @Component({
   selector: 'app-cliente-create',
@@ -17,7 +20,10 @@ import { CurrencyPipe } from '@angular/common';
     MatIcon,
     ReactiveFormsModule,
     MatNativeDateModule,
-    MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
     MatDatepickerModule
   ],
   templateUrl: './cliente-create.component.html',
@@ -25,20 +31,21 @@ import { CurrencyPipe } from '@angular/common';
 })
 export class ClienteCreateComponent {
   email = new FormControl('', [Validators.required, Validators.email]);
-  formattedAmount: any;
-  amount : any;
   errorMessage = '';
+  cliente = new Client();
 
-  constructor(private currencyPipe : CurrencyPipe) {
+  constructor(private client: ServiceCreditApplicationService) {
     merge(this.email.statusChanges, this.email.valueChanges)
       .pipe(takeUntilDestroyed())
       .subscribe(() => this.updateErrorMessage());
   }
 
-  transformAmount(element: any){
-    this.formattedAmount = this.currencyPipe.transform(this.formattedAmount, '$');
+  createCliente() {
+    console.log("fdsfsd")
+    console.log(this.cliente);
+    this.client.saveClient(this.cliente).subscribe(res => {
 
-    element.target.value = this.formattedAmount;
+    });
   }
 
   updateErrorMessage() {

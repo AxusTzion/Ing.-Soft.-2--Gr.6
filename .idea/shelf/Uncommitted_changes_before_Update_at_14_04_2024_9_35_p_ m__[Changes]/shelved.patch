@@ -1,0 +1,372 @@
+Index: .gitignore
+===================================================================
+diff --git a/.gitignore b/.gitignore
+deleted file mode 100644
+--- a/.gitignore	(revision 3cb474c2fcd9f4b0c492f34c478b51518e47c78c)
++++ /dev/null	(revision 3cb474c2fcd9f4b0c492f34c478b51518e47c78c)
+@@ -1,33 +0,0 @@
+-HELP.md
+-target/
+-!.mvn/wrapper/maven-wrapper.jar
+-!**/src/main/**/target/
+-!**/src/test/**/target/
+-
+-### STS ###
+-.apt_generated
+-.classpath
+-.factorypath
+-.project
+-.settings
+-.springBeans
+-.sts4-cache
+-
+-### IntelliJ IDEA ###
+-.idea
+-*.iws
+-*.iml
+-*.ipr
+-
+-### NetBeans ###
+-/nbproject/private/
+-/nbbuild/
+-/dist/
+-/nbdist/
+-/.nb-gradle/
+-build/
+-!**/src/main/**/build/
+-!**/src/test/**/build/
+-
+-### VS Code ###
+-.vscode/
+Index: pom.xml
+===================================================================
+diff --git a/pom.xml b/pom.xml
+deleted file mode 100644
+--- a/pom.xml	(revision 3cb474c2fcd9f4b0c492f34c478b51518e47c78c)
++++ /dev/null	(revision 3cb474c2fcd9f4b0c492f34c478b51518e47c78c)
+@@ -1,67 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+-	<modelVersion>4.0.0</modelVersion>
+-	<parent>
+-		<groupId>org.springframework.boot</groupId>
+-		<artifactId>spring-boot-starter-parent</artifactId>
+-		<version>3.2.4</version>
+-		<relativePath/> <!-- lookup parent from repository -->
+-	</parent>
+-	<groupId>co.ucentral</groupId>
+-	<artifactId>CreditAplication</artifactId>
+-	<version>0.0.1-SNAPSHOT</version>
+-	<name>CreditAplication</name>
+-	<description>Demo project for Spring Boot</description>
+-	<properties>
+-		<java.version>17</java.version>
+-	</properties>
+-	<dependencies>
+-		<dependency>
+-			<groupId>org.springframework.boot</groupId>
+-			<artifactId>spring-boot-starter-data-jdbc</artifactId>
+-		</dependency>
+-		<dependency>
+-			<groupId>org.springframework.boot</groupId>
+-			<artifactId>spring-boot-starter-data-jpa</artifactId>
+-		</dependency>
+-		<dependency>
+-			<groupId>org.springframework.boot</groupId>
+-			<artifactId>spring-boot-starter-web</artifactId>
+-		</dependency>
+-
+-		<dependency>
+-			<groupId>org.postgresql</groupId>
+-			<artifactId>postgresql</artifactId>
+-			<scope>runtime</scope>
+-		</dependency>
+-		<dependency>
+-			<groupId>org.projectlombok</groupId>
+-			<artifactId>lombok</artifactId>
+-			<optional>true</optional>
+-		</dependency>
+-		<dependency>
+-			<groupId>org.springframework.boot</groupId>
+-			<artifactId>spring-boot-starter-test</artifactId>
+-			<scope>test</scope>
+-		</dependency>
+-	</dependencies>
+-
+-	<build>
+-		<plugins>
+-			<plugin>
+-				<groupId>org.springframework.boot</groupId>
+-				<artifactId>spring-boot-maven-plugin</artifactId>
+-				<configuration>
+-					<excludes>
+-						<exclude>
+-							<groupId>org.projectlombok</groupId>
+-							<artifactId>lombok</artifactId>
+-						</exclude>
+-					</excludes>
+-				</configuration>
+-			</plugin>
+-		</plugins>
+-	</build>
+-
+-</project>
+Index: src/main/java/co/ucentral/CreditAplication/CreditAplicationApplication.java
+===================================================================
+diff --git a/src/main/java/co/ucentral/CreditAplication/CreditAplicationApplication.java b/src/main/java/co/ucentral/CreditAplication/CreditAplicationApplication.java
+deleted file mode 100644
+--- a/src/main/java/co/ucentral/CreditAplication/CreditAplicationApplication.java	(revision 3cb474c2fcd9f4b0c492f34c478b51518e47c78c)
++++ /dev/null	(revision 3cb474c2fcd9f4b0c492f34c478b51518e47c78c)
+@@ -1,13 +0,0 @@
+-package co.ucentral.CreditAplication;
+-
+-import org.springframework.boot.SpringApplication;
+-import org.springframework.boot.autoconfigure.SpringBootApplication;
+-
+-@SpringBootApplication
+-public class CreditAplicationApplication {
+-
+-	public static void main(String[] args) {
+-		SpringApplication.run(CreditAplicationApplication.class, args);
+-	}
+-
+-}
+Index: src/main/java/co/ucentral/CreditAplication/repositories/ClienteRepository.java
+===================================================================
+diff --git a/src/main/java/co/ucentral/CreditAplication/repositories/ClienteRepository.java b/src/main/java/co/ucentral/CreditAplication/repositories/ClienteRepository.java
+deleted file mode 100644
+--- a/src/main/java/co/ucentral/CreditAplication/repositories/ClienteRepository.java	(revision 3cb474c2fcd9f4b0c492f34c478b51518e47c78c)
++++ /dev/null	(revision 3cb474c2fcd9f4b0c492f34c478b51518e47c78c)
+@@ -1,8 +0,0 @@
+-package co.ucentral.CreditAplication.repositories;
+-
+-import co.ucentral.CreditAplication.models.Cliente;
+-import org.springframework.data.jpa.repository.JpaRepository;
+-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+-
+-public interface ClienteRepository extends JpaRepository<Cliente, Long>, JpaSpecificationExecutor<Cliente> {
+-}
+Index: .mvn/wrapper/maven-wrapper.properties
+===================================================================
+diff --git a/.mvn/wrapper/maven-wrapper.properties b/.mvn/wrapper/maven-wrapper.properties
+deleted file mode 100644
+--- a/.mvn/wrapper/maven-wrapper.properties	(revision 3cb474c2fcd9f4b0c492f34c478b51518e47c78c)
++++ /dev/null	(revision 3cb474c2fcd9f4b0c492f34c478b51518e47c78c)
+@@ -1,2 +0,0 @@
+-distributionUrl=https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.5/apache-maven-3.9.5-bin.zip
+-wrapperUrl=https://repo.maven.apache.org/maven2/org/apache/maven/wrapper/maven-wrapper/3.2.0/maven-wrapper-3.2.0.jar
+Index: src/main/java/co/ucentral/CreditAplication/models/Cliente.java
+===================================================================
+diff --git a/src/main/java/co/ucentral/CreditAplication/models/Cliente.java b/src/main/java/co/ucentral/CreditAplication/models/Cliente.java
+deleted file mode 100644
+--- a/src/main/java/co/ucentral/CreditAplication/models/Cliente.java	(revision 3cb474c2fcd9f4b0c492f34c478b51518e47c78c)
++++ /dev/null	(revision 3cb474c2fcd9f4b0c492f34c478b51518e47c78c)
+@@ -1,42 +0,0 @@
+-package co.ucentral.CreditAplication.models;
+-
+-import jakarta.persistence.*;
+-import lombok.AllArgsConstructor;
+-import lombok.Data;
+-import lombok.NoArgsConstructor;
+-import net.sf.jsqlparser.expression.DateTimeLiteralExpression;
+-
+-import java.sql.Date;
+-import java.util.List;
+-
+-@Entity
+-@Table(name = "CLIENTE")
+-@Data
+-@NoArgsConstructor
+-@AllArgsConstructor
+-public class Cliente {
+-    @Id
+-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_CLIENTES")
+-    @SequenceGenerator(name = "SEQ_CLIENTES", sequenceName = "SEQ_CLIENTES", allocationSize = 1)
+-    @Column(name = "CLI_ID", nullable = false)
+-    private long id;
+-    @Column(name = "CLI_INGRESOS", nullable = true)
+-    private double ingresos;
+-    @Column(name = "CLI_NOMBRE", nullable = true)
+-    private String nombre;
+-    @Column(name = "CLI_APELLIDO", nullable = true)
+-    private String apellido;
+-    @Column(name = "CLI_NUMERO_TELEFONICO", nullable = true)
+-    private String numeroTelefonico;
+-    @Column(name = "CLI_FECHA_NACIMIENTO", nullable = true)
+-    private Date fechaNacimiento;
+-    @Column(name = "CLI_DIRRECCION", nullable = true)
+-    private String direccion;
+-    @Column(name = "CLI_CORREO_ELECTRONICO", nullable = true)
+-    private String correoElectronico;
+-    @Column(name = "CLI_NUMERO_IDENTIFICACION", nullable = true)
+-    private String numeroDeIdentificacion;
+-
+-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "cliente", cascade = CascadeType.ALL)
+-    private List<Credito> creditoList;
+-}
+Index: src/main/resources/application.properties
+===================================================================
+diff --git a/src/main/resources/application.properties b/src/main/resources/application.properties
+deleted file mode 100644
+--- a/src/main/resources/application.properties	(revision 3cb474c2fcd9f4b0c492f34c478b51518e47c78c)
++++ /dev/null	(revision 3cb474c2fcd9f4b0c492f34c478b51518e47c78c)
+@@ -1,14 +0,0 @@
+-spring.application.name=CreditAplication
+-spring.datasource.url=jdbc:postgresql://localhost:5432/creditdb
+-spring.datasource.username=userdata
+-spring.datasource.password=123456
+-spring.jpa.hibernate.ddl-auto=update
+-spring.jpa.show-sql=true
+-spring.jpa.properties.hibernate.format_sql=true
+-
+-spring.datasource.hikari.minimumIdle=5
+-spring.datasource.hikari.maximumPoolSize=20
+-spring.datasource.hikari.idleTimeout=30000
+-spring.datasource.hikari.maxLifetime=2000000
+-spring.datasource.hikari.connectionTimeout=30000
+-spring.datasource.hikari.poolName=Poolbydata
+\ No newline at end of file
+Index: src/main/java/co/ucentral/CreditAplication/models/Credito.java
+===================================================================
+diff --git a/src/main/java/co/ucentral/CreditAplication/models/Credito.java b/src/main/java/co/ucentral/CreditAplication/models/Credito.java
+deleted file mode 100644
+--- a/src/main/java/co/ucentral/CreditAplication/models/Credito.java	(revision 3cb474c2fcd9f4b0c492f34c478b51518e47c78c)
++++ /dev/null	(revision 3cb474c2fcd9f4b0c492f34c478b51518e47c78c)
+@@ -1,24 +0,0 @@
+-package co.ucentral.CreditAplication.models;
+-
+-import jakarta.persistence.*;
+-import lombok.AllArgsConstructor;
+-import lombok.Data;
+-import lombok.NoArgsConstructor;
+-
+-@Entity
+-@Table(name = "CREDITO")
+-@Data
+-@NoArgsConstructor
+-@AllArgsConstructor
+-public class Credito {
+-
+-    @Id
+-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_CREDITO")
+-    @SequenceGenerator(name = "SEQ_CREDITO", sequenceName = "SEQ_CREDITO", allocationSize = 1)
+-    @Column(name = "CRE_ID", nullable = false)
+-    private long id;
+-
+-    @ManyToOne
+-    @JoinColumn(name="CRE_CLIENT_ID", nullable=true)
+-    private Cliente cliente;
+-}
+Index: src/main/java/co/ucentral/CreditAplication/controllers/ClienteControlador.java
+===================================================================
+diff --git a/src/main/java/co/ucentral/CreditAplication/controllers/ClienteControlador.java b/src/main/java/co/ucentral/CreditAplication/controllers/ClienteControlador.java
+deleted file mode 100644
+--- a/src/main/java/co/ucentral/CreditAplication/controllers/ClienteControlador.java	(revision 3cb474c2fcd9f4b0c492f34c478b51518e47c78c)
++++ /dev/null	(revision 3cb474c2fcd9f4b0c492f34c478b51518e47c78c)
+@@ -1,45 +0,0 @@
+-package co.ucentral.CreditAplication.controllers;
+-
+-import co.ucentral.CreditAplication.models.Cliente;
+-import co.ucentral.CreditAplication.services.ClienteService;
+-import org.springframework.beans.factory.annotation.Autowired;
+-import org.springframework.http.HttpStatus;
+-import org.springframework.http.ResponseEntity;
+-import org.springframework.web.bind.annotation.*;
+-
+-import java.util.List;
+-import java.util.Optional;
+-
+-@RestController
+-public class ClienteControlador {
+-
+-    @Autowired
+-    ClienteService clientService;
+-
+-    @RequestMapping(value = "/clients", method = RequestMethod.GET)
+-    public ResponseEntity<Cliente> list() {
+-        List<Cliente> users = clientService.getAll();
+-        return new ResponseEntity(users, HttpStatus.OK);
+-    }
+-
+-    @RequestMapping(value = "/client", method = RequestMethod.GET)
+-    public ResponseEntity<Cliente> clientePorId(@RequestParam(value = "id") long id) {
+-        Optional<Cliente> clienteOptional = clientService.getById(id);
+-        if(clienteOptional.isPresent()) {
+-            return new ResponseEntity(clienteOptional.get(), HttpStatus.OK);
+-        }
+-        return new ResponseEntity(HttpStatus.NOT_FOUND);
+-    }
+-
+-    @RequestMapping(value = "/create", method = RequestMethod.POST)
+-    public ResponseEntity<Cliente> create(@RequestBody Cliente cliente) {
+-        Cliente userCreated = clientService.save(cliente);
+-        return new ResponseEntity(userCreated, HttpStatus.CREATED);
+-    }
+-
+-    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
+-    public ResponseEntity<Cliente> delete(@RequestParam(value = "id") long id) {
+-        clientService.delete(id);
+-        return new ResponseEntity(HttpStatus.OK);
+-    }
+-}
+Index: src/test/java/co/ucentral/CreditAplication/CreditAplicationApplicationTests.java
+===================================================================
+diff --git a/src/test/java/co/ucentral/CreditAplication/CreditAplicationApplicationTests.java b/src/test/java/co/ucentral/CreditAplication/CreditAplicationApplicationTests.java
+deleted file mode 100644
+--- a/src/test/java/co/ucentral/CreditAplication/CreditAplicationApplicationTests.java	(revision 3cb474c2fcd9f4b0c492f34c478b51518e47c78c)
++++ /dev/null	(revision 3cb474c2fcd9f4b0c492f34c478b51518e47c78c)
+@@ -1,13 +0,0 @@
+-package co.ucentral.CreditAplication;
+-
+-import org.junit.jupiter.api.Test;
+-import org.springframework.boot.test.context.SpringBootTest;
+-
+-@SpringBootTest
+-class CreditAplicationApplicationTests {
+-
+-	@Test
+-	void contextLoads() {
+-	}
+-
+-}
+Index: src/main/java/co/ucentral/CreditAplication/services/ClienteService.java
+===================================================================
+diff --git a/src/main/java/co/ucentral/CreditAplication/services/ClienteService.java b/src/main/java/co/ucentral/CreditAplication/services/ClienteService.java
+deleted file mode 100644
+--- a/src/main/java/co/ucentral/CreditAplication/services/ClienteService.java	(revision 3cb474c2fcd9f4b0c492f34c478b51518e47c78c)
++++ /dev/null	(revision 3cb474c2fcd9f4b0c492f34c478b51518e47c78c)
+@@ -1,33 +0,0 @@
+-package co.ucentral.CreditAplication.services;
+-
+-import co.ucentral.CreditAplication.models.Cliente;
+-
+-import org.springframework.beans.factory.annotation.Autowired;
+-import org.springframework.stereotype.Service;
+-import co.ucentral.CreditAplication.repositories.ClienteRepository;
+-
+-import java.io.Serializable;
+-import java.util.List;
+-import java.util.Optional;
+-
+-@Service
+-public class ClienteService implements Serializable {
+-    @Autowired
+-    ClienteRepository repository;
+-
+-    public Cliente save(Cliente cliente) {
+-        return repository.save(cliente);
+-    }
+-
+-    public List<Cliente> getAll() {
+-        return repository.findAll();
+-    }
+-
+-    public Optional<Cliente> getById(long id) {
+-        return repository.findById(id);
+-    }
+-
+-    public void delete(long id) {
+-        repository.deleteById(id);
+-    }
+-}

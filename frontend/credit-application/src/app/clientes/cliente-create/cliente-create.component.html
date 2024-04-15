@@ -1,7 +1,7 @@
 <form class="example-form">
   <mat-form-field class="example-full-width">
     <mat-label>Numero de Identificacion</mat-label>
-    <input matInput  value="">
+    <input matInput  value=""  [(ngModel)] = "cliente.numeroDeIdentificacion" name="identification">
   </mat-form-field>
 
   <table class="example-full-width" cellspacing="0"><tr>
@@ -41,10 +41,13 @@
     </mat-form-field></td>
   </tr>
   </table>
+
   <mat-form-field class="example-full-width">
     <mat-label>Ingresos</mat-label>
-    <input type="text" (blur)="transformAmount($event)" [(ngModel)]="formattedAmount"  />
-    <input matInput placeholder="1.000.000" />
+    <input matInput placeholder="1.000.000">
   </mat-form-field>
+
   <br>
+
+  <button type="button" mat-flat-button color="primary" (click)="createCliente()" >Solicitar Credito</button>
 </form>

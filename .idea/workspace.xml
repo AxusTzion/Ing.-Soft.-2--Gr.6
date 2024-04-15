@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c10a283-d49a-4fee-ba6d-50cfc4522d94" name="Changes" comment="Add front end">
+    <list default="true" id="7e675df0-8ae4-420d-a19d-ff95c2f24f37" name="Changes" comment="Anadir nuevas entidades cliente con repositorio, controllador y service">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/credit-application/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/credit-application/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/credit-application/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/credit-application/src/app/app.routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/credit-application/src/app/clientes/cliente-create/cliente-create.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/credit-application/src/app/clientes/cliente-create/cliente-create.component.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/credit-application/src/app/clientes/cliente-create/cliente-create.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/credit-application/src/app/clientes/cliente-create/cliente-create.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/credit-application/src/app/clientes/cliente-create/cliente-create.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/credit-application/src/app/clientes/cliente-create/cliente-create.component.ts" afterDir="false" />
     </list>
@@ -20,30 +17,30 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="develop" />
+        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;AxusTzion&quot;
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "BrayanOvalle16"
   }
-}</component>
+}]]></component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
-        <option name="accountId" value="9c7240a9-07af-4d1f-ab92-c4c8c1b9c94f" />
+        <option name="accountId" value="bfb9f06b-edcd-42b5-a92c-7f74be6c28ac" />
         <option name="url" value="https://github.com/AxusTzion/Ing.-Soft.-2--Gr.6.git" />
       </UrlAndAccount>
     </option>
@@ -51,137 +48,98 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHome" value="Use Maven wrapper" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 7
+  &quot;associatedIndex&quot;: 0
 }</component>
-  <component name="ProjectId" id="2e1V1ZSOklOnkAFJ70XFPIzkKES" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="2eTMWKjNZETmO3JZiyBCRUjs4CZ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Maven.CreditAplication [package].executor": "Run",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.CreditAplicationApplication (1).executor": "Run",
     "Spring Boot.CreditAplicationApplication.executor": "Run",
-    "git-widget-placeholder": "feature/add-front-end",
+    "git-widget-placeholder": "develop",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/jcvel/OneDrive/Escritorio/clases/INg. Soft 2/apl/CreditAplication",
+    "last_opened_file_path": "C:/Projects/Ing.-Soft.-2--Gr.6/Backend",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2023.3.3\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2023.3.6\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
-    <configuration name="CreditAplicationApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+  <component name="RunManager" selected="Spring Boot.CreditAplicationApplication (1)">
+    <configuration name="CreditAplicationApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="CreditAplication" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="co.ucentral.CreditAplication.CreditAplicationApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="CreditAplicationApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="SPRING_BOOT_MAIN_CLASS" value="Backend/co.ucentral.CreditAplication.CreditAplicationApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Spring Boot.CreditAplicationApplication (1)" />
+      <item itemvalue="Spring Boot.CreditAplicationApplication" />
+    </list>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
+        <option value="jdk-21.0.1-openjdk-21.0.1-4caba194b151-23eed401" />
       </set>
     </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="1c10a283-d49a-4fee-ba6d-50cfc4522d94" name="Changes" comment="" />
-      <created>1711071856804</created>
+      <changelist id="7e675df0-8ae4-420d-a19d-ff95c2f24f37" name="Changes" comment="" />
+      <created>1711924146560</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1711071856804</updated>
-      <workItem from="1711071857824" duration="3130000" />
-      <workItem from="1712020766898" duration="4910000" />
-      <workItem from="1712101254994" duration="4889000" />
-      <workItem from="1712107439028" duration="3128000" />
-      <workItem from="1712280156897" duration="2661000" />
-      <workItem from="1712713214435" duration="2313000" />
-      <workItem from="1712884880227" duration="2755000" />
+      <updated>1711924146560</updated>
+      <workItem from="1711924151846" duration="1209000" />
+      <workItem from="1711925497890" duration="6386000" />
+      <workItem from="1712541354299" duration="6657000" />
+      <workItem from="1712548117472" duration="642000" />
+      <workItem from="1713148323488" duration="5807000" />
     </task>
-    <task id="LOCAL-00001" summary="first commit">
+    <task id="LOCAL-00001" summary="Anadir nuevas entidades cliente con repositorio, controllador y service">
       <option name="closed" value="true" />
-      <created>1711072017440</created>
+      <created>1711936076713</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1711072017440</updated>
+      <updated>1711936076713</updated>
     </task>
-    <task id="LOCAL-00002" summary="Añadí application.properties para conectar a la base de datos">
-      <option name="closed" value="true" />
-      <created>1711074232231</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1711074232231</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Añadí application.properties para conectar a la base de datos">
-      <option name="closed" value="true" />
-      <created>1712283078062</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1712283078062</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Add front end">
-      <option name="closed" value="true" />
-      <created>1712715865423</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1712715865423</updated>
-    </task>
-    <option name="localTasksCounter" value="5" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
-    <option name="RECENT_FILTERS">
-      <map>
-        <entry key="Branch">
-          <value>
-            <list>
-              <RecentGroup>
-                <option name="FILTER_VALUES">
-                  <option value="develop" />
-                </option>
-              </RecentGroup>
-              <RecentGroup>
-                <option name="FILTER_VALUES">
-                  <option value="origin/main" />
-                </option>
-              </RecentGroup>
-            </list>
-          </value>
-        </entry>
-      </map>
-    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
@@ -192,7 +150,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="feature/add-edit-entity-credito-pagos" />
+                        <option value="main" />
                       </list>
                     </value>
                   </entry>
@@ -205,9 +163,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="first commit" />
-    <MESSAGE value="Añadí application.properties para conectar a la base de datos" />
-    <MESSAGE value="Add front end" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add front end" />
+    <MESSAGE value="Anadir nuevas entidades cliente con repositorio, controllador y service" />
+    <option name="LAST_COMMIT_MESSAGE" value="Anadir nuevas entidades cliente con repositorio, controllador y service" />
   </component>
 </project>
