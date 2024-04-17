@@ -1,7 +1,7 @@
 <form class="example-form">
   <mat-form-field class="example-full-width">
     <mat-label>Numero de Identificacion</mat-label>
-    <input matInput  value=""  [(ngModel)] = "cliente.numeroDeIdentificacion" name="identification">
+    <input matInput [required]="true"  value=""  [(ngModel)] = "cliente.numeroDeIdentificacion" name="identification">
   </mat-form-field>
 
   <table class="example-full-width" cellspacing="0"><tr>
@@ -49,5 +49,5 @@
 
   <br>
 
-  <button type="button" mat-flat-button color="primary" (click)="createCliente()" >Solicitar Credito</button>
+  <button type="submit" mat-flat-button color="primary" (click)="createCliente()" >Solicitar Credito</button>
 </form>
