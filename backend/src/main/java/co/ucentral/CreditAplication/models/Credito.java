@@ -25,7 +25,7 @@ public class Credito {
     @Column(name = "CRE_CREDITO_APROBADO", nullable = true)
     private int creditoAprobado;
     @Column(name = "CRE_PORCENTAJE_INTERES", nullable = true)
-    private int porcentajeInteres;
+    private Double porcentajeInteres;
     @Column(name = "CRE_CANTIDAD_SOLICITADA", nullable = true)
     private int cantidadSolicitada;
     @Column(name = "CRE_ES_APROBADO", nullable = true)

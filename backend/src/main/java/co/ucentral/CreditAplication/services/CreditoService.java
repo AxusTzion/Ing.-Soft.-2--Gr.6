@@ -2,9 +2,11 @@ package co.ucentral.CreditAplication.services;
 
 import co.ucentral.CreditAplication.models.Credito;
 
+import co.ucentral.CreditAplication.models.TipoCredito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import co.ucentral.CreditAplication.repositories.CreditoRepository;
+import org.springframework.util.ObjectUtils;
 
 import java.io.Serializable;
 import java.util.List;
@@ -16,9 +18,11 @@ public class CreditoService implements Serializable {
     CreditoRepository repository;
 
     public Credito save(Credito credito) {
+        if(!ObjectUtils.isEmpty(credito.getTipo())){
+            credito.setPorcentajeInteres(calculateInterestRate(credito.getTipo()));
+        }
         return repository.save(credito);
     }
-
     public List<Credito> getAll() {
         return repository.findAll();
     }
@@ -29,5 +33,29 @@ public class CreditoService implements Serializable {
 
     public void delete(long id) {
         repository.deleteById(id);
+    }
+
+
+    protected Double calculateInterestRate(TipoCredito tipoCredito) {
+        switch (tipoCredito){
+            case Vivienda -> {
+                return 1.1;
+            }
+            case Estudio -> {
+                return 0.9;
+            }
+            case Vehiculo -> {
+                return 1.7;
+            }
+            case CompraDeCartera -> {
+                return 0.8;
+            }
+            case LibreInversion -> {
+                return 1.5;
+            }
+            default -> {
+                return 0d;
+            }
+        }
     }
 }
