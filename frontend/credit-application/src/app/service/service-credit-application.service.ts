@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Client } from '../Modelos/Client';
+import { Credit } from '../Modelos/Credit';
 
 @Injectable({
   providedIn: 'root'
@@ -12,5 +13,9 @@ export class ServiceCreditApplicationService {
 
   saveClient(client: Client) {
     return this.http.post<Client>(this.url + "/Cliente/create", client);
+  }
+
+  saveCredit(credit: Credit) {
+    return this.http.post<Client>(this.url + "/Credito/create", credit);
   }
 }

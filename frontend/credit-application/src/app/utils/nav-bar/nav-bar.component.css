@@ -5,3 +5,8 @@
 .example-spacer {
   flex: 1 1 auto;
 }
+
+.container {
+  background-color: blue;
+  width: 100%;
+}
