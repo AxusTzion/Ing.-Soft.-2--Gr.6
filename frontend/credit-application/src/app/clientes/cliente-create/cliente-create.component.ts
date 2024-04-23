@@ -16,6 +16,8 @@ import { Client } from '../../Modelos/Client';
 import {MatSelectModule} from '@angular/material/select';
 import { Credit } from '../../Modelos/Credit';
 import {MatStepperModule} from '@angular/material/stepper';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cliente-create',
@@ -41,7 +43,10 @@ export class ClienteCreateComponent {
   errorMessage = '';
   cliente : Client = new Client();
   credit : Credit = new Credit();
+  cuotasDeCredito:any;
   aceptableAmount: any = null;
+  acceptableCredit: any = null;
+  monthlyPayment: any = null;
   firstFormGroup = this.formBuilder.group({
     identificationNumber: [''],
     name: [''],
@@ -56,15 +61,48 @@ export class ClienteCreateComponent {
 
   userExistsValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
-      var incomeNumber : number = Number(this.cliente.ingresos);
-      var cuotasNumber : number = Number(this.credit.numeroDeCuotas);
-      var creditNumber : number = Number(control.value);
-      var incomeAceptablePercent = incomeNumber * 0.7;
-      var cuotasDeCredito = creditNumber / cuotasNumber;
-      this.aceptableAmount = creditNumber >= incomeAceptablePercent ? incomeAceptablePercent : null;
-      return incomeAceptablePercent <= creditNumber ? {incomeValidator: true} : null;
+      return this.validateUserExists(control.value) ? {incomeValidator: true} : null;
     }
   }
+
+  validateUserExists(cantidad: any) {
+      var incomeNumber : number = Number(this.cliente.ingresos);
+      var cuotasNumber : number = Number(this.credit.numeroDeCuotas);
+      var interestRate : number = this.getInterestRate(this.credit.tipo);
+      var creditNumber : number = Number(cantidad);
+      var incomeAceptablePercent = incomeNumber * 0.7;
+      var cuotasDeCredito = ((creditNumber * interestRate) + creditNumber) / cuotasNumber;
+      this.aceptableAmount = cuotasDeCredito >= incomeAceptablePercent ? cuotasDeCredito : null;
+      this.acceptableCredit =  incomeAceptablePercent *  cuotasNumber;
+      this.monthlyPayment = incomeAceptablePercent;
+      console.log( Number(cuotasDeCredito));
+      console.log(Number(this.monthlyPayment) );
+      console.log(Number(this.monthlyPayment) <= Number(cuotasDeCredito));
+      return Number(this.monthlyPayment) <= Number(cuotasDeCredito) ;
+  }
+
+  getInterestRate(type: any) {
+    switch (type){
+      case "0" :
+        return 1.1;
+        break;
+      case "3" :
+        return 0.9;
+        break;
+      case "1" :
+        return 1.7;
+        break;
+      case "2" :
+        return 0.8;
+        break;
+      case "4" :
+        return 1.5;
+        break
+      default :
+        return 0;
+      }
+    }
+
 
   secondFormGroup = this.formBuilder.group({
     tipo: ['', [Validators.required]],
@@ -72,7 +110,7 @@ export class ClienteCreateComponent {
     amount :['', [Validators.required, this.userExistsValidator()]]
   });
 
-  constructor(private client: ServiceCreditApplicationService, private formBuilder: FormBuilder) {
+  constructor(private client: ServiceCreditApplicationService, private formBuilder: FormBuilder, private _snackBar: MatSnackBar, private router:Router) {
     merge(this.email.statusChanges, this.email.valueChanges)
       .pipe(takeUntilDestroyed())
       .subscribe(() => this.updateErrorMessage());
@@ -92,9 +130,10 @@ export class ClienteCreateComponent {
   createCredit() {
     this.credit.cliente = this.cliente;
     this.client.saveCredit(this.credit).subscribe(res => {
-
+      this._snackBar.open("Su solicitud a sido recibida, en los proximos dias recibira mas informacion sobre la peticion", "Ok");
     });
   }
+
   updateErrorMessage() {
     if (this.email.hasError('required')) {
       this.errorMessage = 'You must enter a value';
