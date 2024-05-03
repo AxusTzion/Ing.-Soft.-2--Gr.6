@@ -1,5 +1,6 @@
 package co.ucentral.CreditAplication.controllers;
 
+import co.ucentral.CreditAplication.dtos.CustomerLoginDto;
 import co.ucentral.CreditAplication.models.Cliente;
 import co.ucentral.CreditAplication.services.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
