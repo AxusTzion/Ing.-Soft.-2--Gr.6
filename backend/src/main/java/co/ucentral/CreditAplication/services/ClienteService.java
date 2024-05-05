@@ -1,5 +1,6 @@
 package co.ucentral.CreditAplication.services;
 
+import co.ucentral.CreditAplication.dtos.CustomerLoginDto;
 import co.ucentral.CreditAplication.models.Cliente;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,10 @@ public class ClienteService implements Serializable {
 
     public Cliente save(Cliente cliente) {
         return repository.save(cliente);
+    }
+
+    public Cliente login(CustomerLoginDto login) {
+        return repository.findByNumeroDeIdentificacion(login.username);
     }
 
     public List<Cliente> getAll() {
