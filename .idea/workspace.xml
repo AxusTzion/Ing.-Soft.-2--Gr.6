@@ -4,17 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7e675df0-8ae4-420d-a19d-ff95c2f24f37" name="Changes" comment="HU01">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_16_04_2024_8_11_p__m___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_16_04_2024_8_11_p__m___Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_04_2024_9_35_p__m___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_04_2024_9_35_p__m___Changes_.xml" afterDir="false" />
+    <list default="true" id="7e675df0-8ae4-420d-a19d-ff95c2f24f37" name="Changes" comment="Añadir login para clientes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/controllers/ClienteControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/controllers/ClienteControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/repositories/ClienteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/repositories/ClienteRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/services/ClienteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/services/ClienteService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/credit-application/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/credit-application/src/app/app.routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/credit-application/src/app/service/service-credit-application.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/credit-application/src/app/service/service-credit-application.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +123,7 @@
       <workItem from="1713148323488" duration="6331000" />
       <workItem from="1713325593258" duration="9497000" />
       <workItem from="1713720683247" duration="13742000" />
-      <workItem from="1714698668688" duration="4522000" />
+      <workItem from="1714698668688" duration="5814000" />
     </task>
     <task id="LOCAL-00001" summary="Anadir nuevas entidades cliente con repositorio, controllador y service">
       <option name="closed" value="true" />
@@ -174,7 +165,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713801018040</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Añadir login para clientes">
+      <option name="closed" value="true" />
+      <created>1714703454995</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1714703454995</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -206,7 +205,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Anadir nuevas entidades cliente con repositorio, controllador y service" />
     <MESSAGE value="HU01" />
-    <option name="LAST_COMMIT_MESSAGE" value="HU01" />
+    <MESSAGE value="Añadir login para clientes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Añadir login para clientes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
