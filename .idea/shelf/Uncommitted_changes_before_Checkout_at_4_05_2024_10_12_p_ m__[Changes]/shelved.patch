@@ -1,0 +1,130 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"7e675df0-8ae4-420d-a19d-ff95c2f24f37\" name=\"Changes\" comment=\"HU01\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/misc.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/misc.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_16_04_2024_8_11_p__m___Changes_.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_16_04_2024_8_11_p__m___Changes_.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_04_2024_9_35_p__m___Changes_.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_04_2024_9_35_p__m___Changes_.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/controllers/ClienteControlador.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/controllers/ClienteControlador.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/repositories/ClienteRepository.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/repositories/ClienteRepository.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/services/ClienteService.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/services/ClienteService.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/backend/src/main/resources/application.properties\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/backend/src/main/resources/application.properties\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/frontend/credit-application/src/app/app.routes.ts\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/frontend/credit-application/src/app/app.routes.ts\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/frontend/credit-application/src/app/service/service-credit-application.service.ts\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/frontend/credit-application/src/app/service/service-credit-application.service.ts\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"TypeScript File\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"develop\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;BrayanOvalle16&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">\r\n    <option name=\"selectedUrlAndAccountId\">\r\n      <UrlAndAccount>\r\n        <option name=\"accountId\" value=\"9c7240a9-07af-4d1f-ab92-c4c8c1b9c94f\" />\r\n        <option name=\"url\" value=\"https://github.com/AxusTzion/Ing.-Soft.-2--Gr.6.git\" />\r\n      </UrlAndAccount>\r\n    </option>\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 0\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2eTMWKjNZETmO3JZiyBCRUjs4CZ\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"1\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"Maven.CreditAplication [package].executor\": \"Run\",\r\n    \"RequestMappingsPanelOrder0\": \"0\",\r\n    \"RequestMappingsPanelOrder1\": \"1\",\r\n    \"RequestMappingsPanelWidth0\": \"75\",\r\n    \"RequestMappingsPanelWidth1\": \"75\",\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"Spring Boot.CreditAplicationApplication (1).executor\": \"Run\",\r\n    \"Spring Boot.CreditAplicationApplication.executor\": \"Run\",\r\n    \"git-widget-placeholder\": \"feature/HU-15\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"last_opened_file_path\": \"C:/Projects/Ing.-Soft.-2--Gr.6/Backend\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"project.structure.last.edited\": \"Modules\",\r\n    \"project.structure.proportion\": \"0.0\",\r\n    \"project.structure.side.proportion\": \"0.0\",\r\n    \"ts.external.directory.path\": \"C:\\\\Program Files\\\\JetBrains\\\\IntelliJ IDEA 2023.3.3\\\\plugins\\\\javascript-impl\\\\jsLanguageServicesImpl\\\\external\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RunManager\" selected=\"Spring Boot.CreditAplicationApplication (1)\">\r\n    <configuration name=\"CreditAplicationApplication (1)\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" nameIsGenerated=\"true\">\r\n      <module name=\"CreditAplication\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"co.ucentral.CreditAplication.CreditAplicationApplication\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"CreditAplicationApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" nameIsGenerated=\"true\">\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"Backend/co.ucentral.CreditAplication.CreditAplicationApplication\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <list>\r\n      <item itemvalue=\"Spring Boot.CreditAplicationApplication (1)\" />\r\n      <item itemvalue=\"Spring Boot.CreditAplicationApplication\" />\r\n    </list>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"7e675df0-8ae4-420d-a19d-ff95c2f24f37\" name=\"Changes\" comment=\"\" />\r\n      <created>1711924146560</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1711924146560</updated>\r\n      <workItem from=\"1711924151846\" duration=\"1209000\" />\r\n      <workItem from=\"1711925497890\" duration=\"6386000\" />\r\n      <workItem from=\"1712541354299\" duration=\"6657000\" />\r\n      <workItem from=\"1712548117472\" duration=\"642000\" />\r\n      <workItem from=\"1713148323488\" duration=\"6331000\" />\r\n      <workItem from=\"1713325593258\" duration=\"9497000\" />\r\n      <workItem from=\"1713720683247\" duration=\"13742000\" />\r\n      <workItem from=\"1714698668688\" duration=\"4522000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Anadir nuevas entidades cliente con repositorio, controllador y service\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1711936076713</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1711936076713</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Anadir nuevas entidades cliente con repositorio, controllador y service\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1713155351710</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1713155351711</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Anadir nuevas entidades cliente con repositorio, controllador y service\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1713155372195</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1713155372195</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"HU01\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1713801004883</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1713801004884</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"HU01\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1713801018040</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1713801018040</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"6\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"main\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Anadir nuevas entidades cliente con repositorio, controllador y service\" />\r\n    <MESSAGE value=\"HU01\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"HU01\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/services/ClienteService.java</url>\r\n          <line>23</line>\r\n          <option name=\"timeStamp\" value=\"1\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -4,18 +4,7 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="7e675df0-8ae4-420d-a19d-ff95c2f24f37" name="Changes" comment="HU01">
+-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_16_04_2024_8_11_p__m___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_16_04_2024_8_11_p__m___Changes_.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_04_2024_9_35_p__m___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_04_2024_9_35_p__m___Changes_.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/controllers/ClienteControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/controllers/ClienteControlador.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/repositories/ClienteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/repositories/ClienteRepository.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/services/ClienteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/services/ClienteService.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/frontend/credit-application/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/credit-application/src/app/app.routes.ts" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/frontend/credit-application/src/app/service/service-credit-application.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/credit-application/src/app/service/service-credit-application.service.ts" afterDir="false" />
+-    </list>
++    <list default="true" id="7e675df0-8ae4-420d-a19d-ff95c2f24f37" name="Changes" comment="HU01" />
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -24,15 +13,16 @@
+   <component name="FileTemplateManagerImpl">
+     <option name="RECENT_TEMPLATES">
+       <list>
+-        <option value="TypeScript File" />
+         <option value="Class" />
++        <option value="TypeScript File" />
+       </list>
+     </option>
+   </component>
+   <component name="Git.Settings">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-        <entry key="$PROJECT_DIR$" value="develop" />
++        <entry key="$PROJECT_DIR$" value="feature/HU-15" />
++        <entry key="$PROJECT_DIR$" value="master" />
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+@@ -46,7 +36,7 @@
+   <component name="GithubPullRequestsUISettings">
+     <option name="selectedUrlAndAccountId">
+       <UrlAndAccount>
+-        <option name="accountId" value="9c7240a9-07af-4d1f-ab92-c4c8c1b9c94f" />
++        <option name="accountId" value="bfb9f06b-edcd-42b5-a92c-7f74be6c28ac" />
+         <option name="url" value="https://github.com/AxusTzion/Ing.-Soft.-2--Gr.6.git" />
+       </UrlAndAccount>
+     </option>
+@@ -87,7 +77,7 @@
+     "project.structure.last.edited": "Modules",
+     "project.structure.proportion": "0.0",
+     "project.structure.side.proportion": "0.0",
+-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2023.3.3\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
++    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2023.3.6\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+     "vue.rearranger.settings.migration": "true"
+   }
+ }]]></component>
+@@ -113,7 +103,7 @@
+   <component name="SharedIndexes">
+     <attachedChunks>
+       <set>
+-        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
++        <option value="jdk-21.0.1-openjdk-21.0.1-4caba194b151-23eed401" />
+       </set>
+     </attachedChunks>
+   </component>
+@@ -131,8 +121,8 @@
+       <workItem from="1712548117472" duration="642000" />
+       <workItem from="1713148323488" duration="6331000" />
+       <workItem from="1713325593258" duration="9497000" />
+-      <workItem from="1713720683247" duration="13742000" />
+-      <workItem from="1714698668688" duration="4522000" />
++      <workItem from="1713720683247" duration="13887000" />
++      <workItem from="1714872410471" duration="1797000" />
+     </task>
+     <task id="LOCAL-00001" summary="Anadir nuevas entidades cliente con repositorio, controllador y service">
+       <option name="closed" value="true" />
+@@ -174,7 +164,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1713801018040</updated>
+     </task>
+-    <option name="localTasksCounter" value="6" />
++    <task id="LOCAL-00006" summary="HU01">
++      <option name="closed" value="true" />
++      <created>1713853012118</created>
++      <option name="number" value="00006" />
++      <option name="presentableId" value="LOCAL-00006" />
++      <option name="project" value="LOCAL" />
++      <updated>1713853012118</updated>
++    </task>
++    <option name="localTasksCounter" value="7" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -191,7 +189,7 @@
+                   <entry key="branch">
+                     <value>
+                       <list>
+-                        <option value="main" />
++                        <option value="develop" />
+                       </list>
+                     </value>
+                   </entry>
+@@ -208,15 +206,4 @@
+     <MESSAGE value="HU01" />
+     <option name="LAST_COMMIT_MESSAGE" value="HU01" />
+   </component>
+-  <component name="XDebuggerManager">
+-    <breakpoint-manager>
+-      <breakpoints>
+-        <line-breakpoint enabled="true" type="java-line">
+-          <url>file://$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/services/ClienteService.java</url>
+-          <line>23</line>
+-          <option name="timeStamp" value="1" />
+-        </line-breakpoint>
+-      </breakpoints>
+-    </breakpoint-manager>
+-  </component>
+ </project>
+\ No newline at end of file
