@@ -2,6 +2,7 @@ package co.ucentral.CreditAplication.controllers;
 
 import co.ucentral.CreditAplication.dtos.CustomerLoginDto;
 import co.ucentral.CreditAplication.models.Cliente;
+import co.ucentral.CreditAplication.services.AuthService;
 import co.ucentral.CreditAplication.services.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,12 +19,23 @@ public class AuthController {
     @Autowired
     ClienteService clientService;
 
+    @Autowired
+    AuthService authService;
+
     @RequestMapping(value = "", method = RequestMethod.POST)
     public ResponseEntity<Cliente> login(@RequestBody CustomerLoginDto login) {
         Cliente user = clientService.login(login);
         if(user == null) {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity(user, HttpStatus.CREATED);
+        return new ResponseEntity(user, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/admin", method = RequestMethod.POST)
+    public ResponseEntity<Cliente> loginAdmin(@RequestBody CustomerLoginDto login) {
+        if(!this.authService.loginAdmin(login.getUsername(), login.getPassword())) {
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity(HttpStatus.OK);
     }
 }

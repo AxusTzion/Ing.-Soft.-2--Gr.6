@@ -68,17 +68,30 @@ export class ClienteCreateComponent {
   validateUserExists(cantidad: any) {
       var incomeNumber : number = Number(this.cliente.ingresos);
       var cuotasNumber : number = Number(this.credit.numeroDeCuotas);
-      var interestRate : number = this.getInterestRate(this.credit.tipo);
+      var interestRate : number = this.getInterestRate(this.credit.tipo) /100;
       var creditNumber : number = Number(cantidad);
       var incomeAceptablePercent = incomeNumber * 0.7;
-      var cuotasDeCredito = ((creditNumber * interestRate) + creditNumber) / cuotasNumber;
-      this.aceptableAmount = cuotasDeCredito >= incomeAceptablePercent ? cuotasDeCredito : null;
-      this.acceptableCredit =  incomeAceptablePercent *  cuotasNumber;
+      var cuotasDeCredito = this.calcularCuotaEstimada(creditNumber, interestRate, cuotasNumber);
+      this.aceptableAmount = Number(this.acceptableCredit / cuotasNumber) <= Number(cuotasDeCredito) ? cuotasDeCredito : null;
+      this.acceptableCredit =  this.calcularMontoPrincipal(incomeAceptablePercent, interestRate, cuotasNumber );
       this.monthlyPayment = incomeAceptablePercent;
-      console.log( Number(cuotasDeCredito));
-      console.log(Number(this.monthlyPayment) );
-      console.log(Number(this.monthlyPayment) <= Number(cuotasDeCredito));
-      return Number(this.monthlyPayment) <= Number(cuotasDeCredito) ;
+      console.log( Number(this.acceptableCredit / cuotasNumber));
+      console.log(Number(cuotasDeCredito) );
+      console.log(Number(incomeAceptablePercent) <= Number(cuotasDeCredito));
+      return Number(incomeAceptablePercent) <= Number(cuotasDeCredito) ;
+  }
+
+  calcularCuotaEstimada(valorPrestamo: number, tasaInteresMensual: number, numCuotas: number): number {
+    // Calcular la cuota mensual usando la fórmula de amortización
+    const cuotaEstimada = valorPrestamo * (tasaInteresMensual / (1 - Math.pow(1 + tasaInteresMensual, -numCuotas)));
+
+    return cuotaEstimada;
+  }
+  calcularMontoPrincipal(cuota: number, tasaInteresMensual: number, numMeses: number): number {
+    // Calcular el monto principal usando la fórmula de amortización
+    const montoPrincipal = cuota * (1 - Math.pow(1 + tasaInteresMensual, -numMeses)) / tasaInteresMensual;
+
+    return montoPrincipal ;
   }
 
   getInterestRate(type: any) {
