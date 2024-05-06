@@ -29,7 +29,7 @@ public class Credito {
     @Column(name = "CRE_CANTIDAD_SOLICITADA", nullable = true)
     private int cantidadSolicitada;
     @Column(name = "CRE_ES_APROBADO", nullable = true)
-    private Boolean esAprobado;
+    private CreditoEstadoEnum esAprobado;
     @Column(name = "CRE_FECHA_APROBACION", nullable = true)
     private Date fechaDeAprobacion;
     @Column(name = "CRE_NUMERO_CUOTAS", nullable = true)
@@ -38,10 +38,10 @@ public class Credito {
     private Date diaDePago;
 
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="CRE_CLIENT_ID", nullable=true)
     private Cliente cliente;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "credito", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "credito", cascade = CascadeType.ALL)
     private List<Pagos> pagosList;
 }
