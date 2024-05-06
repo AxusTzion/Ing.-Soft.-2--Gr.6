@@ -1,6 +1,7 @@
 package co.ucentral.CreditAplication.controllers;
 
 import co.ucentral.CreditAplication.models.Credito;
+import co.ucentral.CreditAplication.models.dtos.CreditStatusChangeRequestDto;
 import co.ucentral.CreditAplication.services.CreditoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,6 +24,12 @@ public class CreditoControlador {
         return new ResponseEntity(users, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/non-approved-credits", method = RequestMethod.GET)
+    public ResponseEntity<Credito> listPendingCredits() {
+        List<Credito> creditoList = creditService.getAllPending();
+        return new ResponseEntity(creditoList, HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/credit", method = RequestMethod.GET)
     public ResponseEntity<Credito> creditoPorId(@RequestParam(value = "id") long id) {
         Optional<Credito> creditoOptional = creditService.getById(id);
@@ -30,6 +37,12 @@ public class CreditoControlador {
             return new ResponseEntity(creditoOptional.get(), HttpStatus.OK);
         }
         return new ResponseEntity(HttpStatus.NOT_FOUND);
+    }
+
+    @RequestMapping(value = "/update-state", method = RequestMethod.PUT)
+    public ResponseEntity changeStatusCredit(@RequestBody CreditStatusChangeRequestDto creditoCreditStatusChangeRequestDto) {
+        creditService.updateCreditState(creditoCreditStatusChangeRequestDto);
+        return ResponseEntity.ok().build();
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)

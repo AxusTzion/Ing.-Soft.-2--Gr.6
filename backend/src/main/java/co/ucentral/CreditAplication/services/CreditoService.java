@@ -2,7 +2,9 @@ package co.ucentral.CreditAplication.services;
 
 import co.ucentral.CreditAplication.models.Credito;
 
+import co.ucentral.CreditAplication.models.CreditoEstadoEnum;
 import co.ucentral.CreditAplication.models.TipoCredito;
+import co.ucentral.CreditAplication.models.dtos.CreditStatusChangeRequestDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import co.ucentral.CreditAplication.repositories.CreditoRepository;
@@ -21,10 +23,24 @@ public class CreditoService implements Serializable {
         if(!ObjectUtils.isEmpty(credito.getTipo())){
             credito.setPorcentajeInteres(calculateInterestRate(credito.getTipo()));
         }
+        credito.setEsAprobado(CreditoEstadoEnum.PENDIENTE);
         return repository.save(credito);
     }
     public List<Credito> getAll() {
         return repository.findAll();
+    }
+
+    public List<Credito> getAllPending() {
+        return repository.findByEsAprobadoEquals(CreditoEstadoEnum.PENDIENTE);
+    }
+
+    public void updateCreditState(CreditStatusChangeRequestDto creditStatusChangeRequestDto) {
+        Optional<Credito> credito = getById(creditStatusChangeRequestDto.getId());
+        if(credito.isPresent()) {
+            CreditoEstadoEnum estado = creditStatusChangeRequestDto.getIsApproved() ? CreditoEstadoEnum.APPROVADO : CreditoEstadoEnum.RECHAZADO;
+            credito.get().setEsAprobado(estado);
+            this.repository.save(credito.get());
+        }
     }
 
     public Optional<Credito> getById(long id) {

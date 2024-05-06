@@ -1,0 +1,434 @@
+Index: backend/src/main/java/co/ucentral/CreditAplication/services/CreditoService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package co.ucentral.CreditAplication.services;\r\n\r\nimport co.ucentral.CreditAplication.models.Credito;\r\n\r\nimport co.ucentral.CreditAplication.models.TipoCredito;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.stereotype.Service;\r\nimport co.ucentral.CreditAplication.repositories.CreditoRepository;\r\nimport org.springframework.util.ObjectUtils;\r\n\r\nimport java.io.Serializable;\r\nimport java.util.List;\r\nimport java.util.Optional;\r\n\r\n@Service\r\npublic class CreditoService implements Serializable {\r\n    @Autowired\r\n    CreditoRepository repository;\r\n\r\n    public Credito save(Credito credito) {\r\n        if(!ObjectUtils.isEmpty(credito.getTipo())){\r\n            credito.setPorcentajeInteres(calculateInterestRate(credito.getTipo()));\r\n        }\r\n        return repository.save(credito);\r\n    }\r\n    public List<Credito> getAll() {\r\n        return repository.findAll();\r\n    }\r\n\r\n    public Optional<Credito> getById(long id) {\r\n        return repository.findById(id);\r\n    }\r\n\r\n    public void delete(long id) {\r\n        repository.deleteById(id);\r\n    }\r\n\r\n\r\n    protected Double calculateInterestRate(TipoCredito tipoCredito) {\r\n        switch (tipoCredito){\r\n            case Vivienda -> {\r\n                return 1.1;\r\n            }\r\n            case Estudio -> {\r\n                return 0.9;\r\n            }\r\n            case Vehiculo -> {\r\n                return 1.7;\r\n            }\r\n            case CompraDeCartera -> {\r\n                return 0.8;\r\n            }\r\n            case LibreInversion -> {\r\n                return 1.5;\r\n            }\r\n            default -> {\r\n                return 0d;\r\n            }\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/src/main/java/co/ucentral/CreditAplication/services/CreditoService.java b/backend/src/main/java/co/ucentral/CreditAplication/services/CreditoService.java
+--- a/backend/src/main/java/co/ucentral/CreditAplication/services/CreditoService.java	(revision 4c6160972925364bd292428d0d3c1e10e966b236)
++++ b/backend/src/main/java/co/ucentral/CreditAplication/services/CreditoService.java	(date 1714884944965)
+@@ -2,7 +2,9 @@
+ 
+ import co.ucentral.CreditAplication.models.Credito;
+ 
++import co.ucentral.CreditAplication.models.CreditoEstadoEnum;
+ import co.ucentral.CreditAplication.models.TipoCredito;
++import co.ucentral.CreditAplication.models.dtos.CreditStatusChangeRequestDto;
+ import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.stereotype.Service;
+ import co.ucentral.CreditAplication.repositories.CreditoRepository;
+@@ -21,12 +23,26 @@
+         if(!ObjectUtils.isEmpty(credito.getTipo())){
+             credito.setPorcentajeInteres(calculateInterestRate(credito.getTipo()));
+         }
++        credito.setEsAprobado(CreditoEstadoEnum.PENDIENTE);
+         return repository.save(credito);
+     }
+     public List<Credito> getAll() {
+         return repository.findAll();
+     }
+ 
++    public List<Credito> getAllPending() {
++        return repository.findByEsAprobadoEquals(CreditoEstadoEnum.PENDIENTE);
++    }
++
++    public void updateCreditState(CreditStatusChangeRequestDto creditStatusChangeRequestDto) {
++        Optional<Credito> credito = getById(creditStatusChangeRequestDto.getId());
++        if(credito.isPresent()) {
++            CreditoEstadoEnum estado = creditStatusChangeRequestDto.getIsApproved() ? CreditoEstadoEnum.APPROVADO : CreditoEstadoEnum.RECHAZADO;
++            credito.get().setEsAprobado(estado);
++            this.repository.save(credito.get());
++        }
++    }
++
+     public Optional<Credito> getById(long id) {
+         return repository.findById(id);
+     }
+Index: frontend/credit-application/src/app/service/service-credit-application.service.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import { HttpClient } from '@angular/common/http';\r\nimport { Injectable } from '@angular/core';\r\nimport { Client } from '../Modelos/Client';\r\nimport { Credit } from '../Modelos/Credit';\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class ServiceCreditApplicationService {\r\n\r\n  url = \"http://localhost:8080\";\r\n  constructor(private http: HttpClient) { }\r\n\r\n  saveClient(client: Client) {\r\n    return this.http.post<Client>(this.url + \"/Cliente/create\", client);\r\n  }\r\n\r\n  saveCredit(credit: Credit) {\r\n    return this.http.post<Client>(this.url + \"/Credito/create\", credit);\r\n  }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/frontend/credit-application/src/app/service/service-credit-application.service.ts b/frontend/credit-application/src/app/service/service-credit-application.service.ts
+--- a/frontend/credit-application/src/app/service/service-credit-application.service.ts	(revision 4c6160972925364bd292428d0d3c1e10e966b236)
++++ b/frontend/credit-application/src/app/service/service-credit-application.service.ts	(date 1714928795644)
+@@ -2,6 +2,7 @@
+ import { Injectable } from '@angular/core';
+ import { Client } from '../Modelos/Client';
+ import { Credit } from '../Modelos/Credit';
++import { CreditChangeStatusDto } from '../Modelos/CreditChangeStatusDto';
+ 
+ @Injectable({
+   providedIn: 'root'
+@@ -18,4 +19,12 @@
+   saveCredit(credit: Credit) {
+     return this.http.post<Client>(this.url + "/Credito/create", credit);
+   }
++
++  getNonApprevedCreditList() {
++    return this.http.get<Credit>(this.url + "/Credito/non-approved-credits");
++  }
++
++  changeCreditStatus(request: CreditChangeStatusDto) {
++    return this.http.put(this.url + "/Credito/update-state", request);
++  }
+ }
+Index: backend/src/main/java/co/ucentral/CreditAplication/repositories/CreditoRepository.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package co.ucentral.CreditAplication.repositories;\r\n\r\nimport co.ucentral.CreditAplication.models.Credito;\r\nimport org.springframework.data.jpa.repository.JpaRepository;\r\nimport org.springframework.data.jpa.repository.JpaSpecificationExecutor;\r\n\r\npublic interface CreditoRepository extends JpaRepository<Credito, Long>, JpaSpecificationExecutor<Credito> {\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/src/main/java/co/ucentral/CreditAplication/repositories/CreditoRepository.java b/backend/src/main/java/co/ucentral/CreditAplication/repositories/CreditoRepository.java
+--- a/backend/src/main/java/co/ucentral/CreditAplication/repositories/CreditoRepository.java	(revision 4c6160972925364bd292428d0d3c1e10e966b236)
++++ b/backend/src/main/java/co/ucentral/CreditAplication/repositories/CreditoRepository.java	(date 1714883490111)
+@@ -1,8 +1,13 @@
+ package co.ucentral.CreditAplication.repositories;
+ 
+ import co.ucentral.CreditAplication.models.Credito;
++import co.ucentral.CreditAplication.models.CreditoEstadoEnum;
+ import org.springframework.data.jpa.repository.JpaRepository;
+ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+ 
++import java.util.List;
++
+ public interface CreditoRepository extends JpaRepository<Credito, Long>, JpaSpecificationExecutor<Credito> {
++
++    public List<Credito> findByEsAprobadoEquals(CreditoEstadoEnum esAprobado);
+ }
+Index: backend/src/main/resources/application.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>spring.application.name=CreditAplication\r\nspring.datasource.url=jdbc:postgresql://localhost:5432/creditdb\r\nspring.datasource.username=postgres\r\nspring.datasource.password=12345\r\nspring.jpa.hibernate.ddl-auto=create\r\nspring.jpa.show-sql=true\r\nspring.jpa.properties.hibernate.format_sql=true\r\n\r\nspring.datasource.hikari.minimumIdle=5\r\nspring.datasource.hikari.maximumPoolSize=20\r\nspring.datasource.hikari.idleTimeout=30000\r\nspring.datasource.hikari.maxLifetime=2000000\r\nspring.datasource.hikari.connectionTimeout=30000\r\nspring.datasource.hikari.poolName=Poolbydata
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>ISO-8859-1
+===================================================================
+diff --git a/backend/src/main/resources/application.properties b/backend/src/main/resources/application.properties
+--- a/backend/src/main/resources/application.properties	(revision 4c6160972925364bd292428d0d3c1e10e966b236)
++++ b/backend/src/main/resources/application.properties	(date 1714884951860)
+@@ -2,10 +2,14 @@
+ spring.datasource.url=jdbc:postgresql://localhost:5432/creditdb
+ spring.datasource.username=postgres
+ spring.datasource.password=12345
+-spring.jpa.hibernate.ddl-auto=create
++spring.jpa.hibernate.ddl-auto=update
+ spring.jpa.show-sql=true
+ spring.jpa.properties.hibernate.format_sql=true
+ 
++
++
++
++
+ spring.datasource.hikari.minimumIdle=5
+ spring.datasource.hikari.maximumPoolSize=20
+ spring.datasource.hikari.idleTimeout=30000
+Index: backend/src/main/java/co/ucentral/CreditAplication/configurations/CorsConfig.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package co.ucentral.CreditAplication.configurations;\r\n\r\nimport org.springframework.context.annotation.Configuration;\r\nimport org.springframework.web.servlet.config.annotation.CorsRegistry;\r\nimport org.springframework.web.servlet.config.annotation.WebMvcConfigurer;\r\n\r\n@Configuration\r\npublic class CorsConfig implements WebMvcConfigurer {\r\n    @Override\r\n    public void addCorsMappings(CorsRegistry registry) {\r\n        registry.addMapping(\"/**\")\r\n                .allowedOrigins(\"http://localhost:4200\")\r\n                .allowCredentials(true);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/src/main/java/co/ucentral/CreditAplication/configurations/CorsConfig.java b/backend/src/main/java/co/ucentral/CreditAplication/configurations/CorsConfig.java
+--- a/backend/src/main/java/co/ucentral/CreditAplication/configurations/CorsConfig.java	(revision 4c6160972925364bd292428d0d3c1e10e966b236)
++++ b/backend/src/main/java/co/ucentral/CreditAplication/configurations/CorsConfig.java	(date 1714929037695)
+@@ -1,6 +1,7 @@
+ package co.ucentral.CreditAplication.configurations;
+ 
+ import org.springframework.context.annotation.Configuration;
++import org.springframework.http.HttpMethod;
+ import org.springframework.web.servlet.config.annotation.CorsRegistry;
+ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+ 
+@@ -10,6 +11,8 @@
+     public void addCorsMappings(CorsRegistry registry) {
+         registry.addMapping("/**")
+                 .allowedOrigins("http://localhost:4200")
++                .allowedMethods(HttpMethod.GET.name(), HttpMethod.PUT.name(),
++                        HttpMethod.POST.name(), HttpMethod.DELETE.name())
+                 .allowCredentials(true);
+     }
+ }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"7e675df0-8ae4-420d-a19d-ff95c2f24f37\" name=\"Changes\" comment=\"HU01\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n        <option value=\"TypeScript File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"master\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;BrayanOvalle16&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">\r\n    <option name=\"selectedUrlAndAccountId\">\r\n      <UrlAndAccount>\r\n        <option name=\"accountId\" value=\"bfb9f06b-edcd-42b5-a92c-7f74be6c28ac\" />\r\n        <option name=\"url\" value=\"https://github.com/AxusTzion/Ing.-Soft.-2--Gr.6.git\" />\r\n      </UrlAndAccount>\r\n    </option>\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 0\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2eTMWKjNZETmO3JZiyBCRUjs4CZ\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"1\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;Maven.CreditAplication [package].executor&quot;: &quot;Run&quot;,\r\n    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,\r\n    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,\r\n    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,\r\n    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;Spring Boot.CreditAplicationApplication (1).executor&quot;: &quot;Run&quot;,\r\n    &quot;Spring Boot.CreditAplicationApplication.executor&quot;: &quot;Run&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,\r\n    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;C:/Projects/Ing.-Soft.-2--Gr.6/Backend&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\r\n    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,\r\n    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,\r\n    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,\r\n    &quot;ts.external.directory.path&quot;: &quot;C:\\\\Program Files\\\\JetBrains\\\\IntelliJ IDEA 2023.3.6\\\\plugins\\\\javascript-impl\\\\jsLanguageServicesImpl\\\\external&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RunManager\" selected=\"Spring Boot.CreditAplicationApplication (1)\">\r\n    <configuration name=\"CreditAplicationApplication (1)\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" nameIsGenerated=\"true\">\r\n      <module name=\"CreditAplication\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"co.ucentral.CreditAplication.CreditAplicationApplication\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"CreditAplicationApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" nameIsGenerated=\"true\">\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"Backend/co.ucentral.CreditAplication.CreditAplicationApplication\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <list>\r\n      <item itemvalue=\"Spring Boot.CreditAplicationApplication (1)\" />\r\n      <item itemvalue=\"Spring Boot.CreditAplicationApplication\" />\r\n    </list>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"jdk-21.0.1-openjdk-21.0.1-4caba194b151-23eed401\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"7e675df0-8ae4-420d-a19d-ff95c2f24f37\" name=\"Changes\" comment=\"\" />\r\n      <created>1711924146560</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1711924146560</updated>\r\n      <workItem from=\"1711924151846\" duration=\"1209000\" />\r\n      <workItem from=\"1711925497890\" duration=\"6386000\" />\r\n      <workItem from=\"1712541354299\" duration=\"6657000\" />\r\n      <workItem from=\"1712548117472\" duration=\"642000\" />\r\n      <workItem from=\"1713148323488\" duration=\"6331000\" />\r\n      <workItem from=\"1713325593258\" duration=\"9497000\" />\r\n      <workItem from=\"1713720683247\" duration=\"13742000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Anadir nuevas entidades cliente con repositorio, controllador y service\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1711936076713</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1711936076713</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Anadir nuevas entidades cliente con repositorio, controllador y service\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1713155351710</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1713155351711</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Anadir nuevas entidades cliente con repositorio, controllador y service\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1713155372195</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1713155372195</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"HU01\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1713801004883</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1713801004884</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"HU01\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1713801018040</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1713801018040</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"6\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"main\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Anadir nuevas entidades cliente con repositorio, controllador y service\" />\r\n    <MESSAGE value=\"HU01\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"HU01\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 4c6160972925364bd292428d0d3c1e10e966b236)
++++ b/.idea/workspace.xml	(date 1714932773972)
+@@ -4,8 +4,17 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="7e675df0-8ae4-420d-a19d-ff95c2f24f37" name="Changes" comment="HU01">
++    <list default="true" id="7e675df0-8ae4-420d-a19d-ff95c2f24f37" name="Changes" comment="HU02">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/configurations/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/configurations/CorsConfig.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/controllers/CreditoControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/controllers/CreditoControlador.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/models/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/models/Cliente.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/models/Credito.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/models/Credito.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/repositories/CreditoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/repositories/CreditoRepository.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/services/CreditoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/services/CreditoService.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/frontend/credit-application/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/credit-application/src/app/app.routes.ts" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/frontend/credit-application/src/app/service/service-credit-application.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/credit-application/src/app/service/service-credit-application.service.ts" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -15,7 +24,9 @@
+   <component name="FileTemplateManagerImpl">
+     <option name="RECENT_TEMPLATES">
+       <list>
++        <option value="Enum" />
+         <option value="Class" />
++        <option value="HTML File" />
+         <option value="TypeScript File" />
+       </list>
+     </option>
+@@ -23,6 +34,7 @@
+   <component name="Git.Settings">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
++        <entry key="$PROJECT_DIR$" value="feature/HU-01" />
+         <entry key="$PROJECT_DIR$" value="master" />
+       </map>
+     </option>
+@@ -56,32 +68,38 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;Maven.CreditAplication [package].executor&quot;: &quot;Run&quot;,
+-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;Spring Boot.CreditAplicationApplication (1).executor&quot;: &quot;Run&quot;,
+-    &quot;Spring Boot.CreditAplicationApplication.executor&quot;: &quot;Run&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+-    &quot;last_opened_file_path&quot;: &quot;C:/Projects/Ing.-Soft.-2--Gr.6/Backend&quot;,
+-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+-    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2023.3.6\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "DefaultHtmlFileTemplate": "HTML File",
++    "Maven.CreditAplication [package].executor": "Run",
++    "RequestMappingsPanelOrder0": "0",
++    "RequestMappingsPanelOrder1": "1",
++    "RequestMappingsPanelWidth0": "75",
++    "RequestMappingsPanelWidth1": "75",
++    "RunOnceActivity.OpenProjectViewOnStart": "true",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "Spring Boot.CreditAplicationApplication (1).executor": "Run",
++    "Spring Boot.CreditAplicationApplication.executor": "Run",
++    "git-widget-placeholder": "feature/HU-02",
++    "kotlin-language-version-configured": "true",
++    "last_opened_file_path": "C:/Projects/Ing.-Soft.-2--Gr.6/Backend",
++    "node.js.detected.package.eslint": "true",
++    "node.js.detected.package.tslint": "true",
++    "node.js.selected.package.eslint": "(autodetect)",
++    "node.js.selected.package.tslint": "(autodetect)",
++    "nodejs_package_manager_path": "npm",
++    "project.structure.last.edited": "Modules",
++    "project.structure.proportion": "0.0",
++    "project.structure.side.proportion": "0.0",
++    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2023.3.6\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
++    "vue.rearranger.settings.migration": "true"
+   }
+-}</component>
++}]]></component>
++  <component name="RecentsManager">
++    <key name="MoveFile.RECENT_KEYS">
++      <recent name="C:\Projects\Ing.-Soft.-2--Gr.6\FrontEnd\credit-application\src\app\admin\credit-list" />
++    </key>
++  </component>
+   <component name="RunManager" selected="Spring Boot.CreditAplicationApplication (1)">
+     <configuration name="CreditAplicationApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+       <module name="CreditAplication" />
+@@ -122,7 +140,8 @@
+       <workItem from="1712548117472" duration="642000" />
+       <workItem from="1713148323488" duration="6331000" />
+       <workItem from="1713325593258" duration="9497000" />
+-      <workItem from="1713720683247" duration="13742000" />
++      <workItem from="1713720683247" duration="13887000" />
++      <workItem from="1714872410471" duration="16311000" />
+     </task>
+     <task id="LOCAL-00001" summary="Anadir nuevas entidades cliente con repositorio, controllador y service">
+       <option name="closed" value="true" />
+@@ -164,7 +183,23 @@
+       <option name="project" value="LOCAL" />
+       <updated>1713801018040</updated>
+     </task>
+-    <option name="localTasksCounter" value="6" />
++    <task id="LOCAL-00006" summary="HU01">
++      <option name="closed" value="true" />
++      <created>1713853012118</created>
++      <option name="number" value="00006" />
++      <option name="presentableId" value="LOCAL-00006" />
++      <option name="project" value="LOCAL" />
++      <updated>1713853012118</updated>
++    </task>
++    <task id="LOCAL-00007" summary="HU02">
++      <option name="closed" value="true" />
++      <created>1714932750615</created>
++      <option name="number" value="00007" />
++      <option name="presentableId" value="LOCAL-00007" />
++      <option name="project" value="LOCAL" />
++      <updated>1714932750616</updated>
++    </task>
++    <option name="localTasksCounter" value="8" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -181,7 +216,7 @@
+                   <entry key="branch">
+                     <value>
+                       <list>
+-                        <option value="main" />
++                        <option value="develop" />
+                       </list>
+                     </value>
+                   </entry>
+@@ -196,6 +231,7 @@
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="Anadir nuevas entidades cliente con repositorio, controllador y service" />
+     <MESSAGE value="HU01" />
+-    <option name="LAST_COMMIT_MESSAGE" value="HU01" />
++    <MESSAGE value="HU02" />
++    <option name="LAST_COMMIT_MESSAGE" value="HU02" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: backend/src/main/java/co/ucentral/CreditAplication/models/Credito.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package co.ucentral.CreditAplication.models;\r\n\r\nimport jakarta.persistence.*;\r\nimport lombok.AllArgsConstructor;\r\nimport lombok.Data;\r\nimport lombok.NoArgsConstructor;\r\n\r\nimport java.sql.Date;\r\nimport java.util.List;\r\n\r\n@Entity\r\n@Table(name = \"CREDITO\")\r\n@Data\r\n@NoArgsConstructor\r\n@AllArgsConstructor\r\npublic class Credito {\r\n\r\n    @Id\r\n    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = \"SEQ_CREDITO\")\r\n    @SequenceGenerator(name = \"SEQ_CREDITO\", sequenceName = \"SEQ_CREDITO\", allocationSize = 1)\r\n    @Column(name = \"CRE_ID\", nullable = false)\r\n    private long id;\r\n    @Column(name = \"CRE_TIPO\", nullable = true)\r\n    private TipoCredito tipo;\r\n    @Column(name = \"CRE_CREDITO_APROBADO\", nullable = true)\r\n    private int creditoAprobado;\r\n    @Column(name = \"CRE_PORCENTAJE_INTERES\", nullable = true)\r\n    private Double porcentajeInteres;\r\n    @Column(name = \"CRE_CANTIDAD_SOLICITADA\", nullable = true)\r\n    private int cantidadSolicitada;\r\n    @Column(name = \"CRE_ES_APROBADO\", nullable = true)\r\n    private Boolean esAprobado;\r\n    @Column(name = \"CRE_FECHA_APROBACION\", nullable = true)\r\n    private Date fechaDeAprobacion;\r\n    @Column(name = \"CRE_NUMERO_CUOTAS\", nullable = true)\r\n    private int numeroDeCuotas;\r\n    @Column(name = \"CRE_DIA_DE_PAGO\", nullable = true)\r\n    private Date diaDePago;\r\n\r\n\r\n    @ManyToOne\r\n    @JoinColumn(name=\"CRE_CLIENT_ID\", nullable=true)\r\n    private Cliente cliente;\r\n\r\n    @OneToMany(fetch = FetchType.LAZY, mappedBy = \"credito\", cascade = CascadeType.ALL)\r\n    private List<Pagos> pagosList;\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/src/main/java/co/ucentral/CreditAplication/models/Credito.java b/backend/src/main/java/co/ucentral/CreditAplication/models/Credito.java
+--- a/backend/src/main/java/co/ucentral/CreditAplication/models/Credito.java	(revision 4c6160972925364bd292428d0d3c1e10e966b236)
++++ b/backend/src/main/java/co/ucentral/CreditAplication/models/Credito.java	(date 1714888964414)
+@@ -29,7 +29,7 @@
+     @Column(name = "CRE_CANTIDAD_SOLICITADA", nullable = true)
+     private int cantidadSolicitada;
+     @Column(name = "CRE_ES_APROBADO", nullable = true)
+-    private Boolean esAprobado;
++    private CreditoEstadoEnum esAprobado;
+     @Column(name = "CRE_FECHA_APROBACION", nullable = true)
+     private Date fechaDeAprobacion;
+     @Column(name = "CRE_NUMERO_CUOTAS", nullable = true)
+@@ -38,10 +38,10 @@
+     private Date diaDePago;
+ 
+ 
+-    @ManyToOne
++    @ManyToOne(fetch = FetchType.EAGER)
+     @JoinColumn(name="CRE_CLIENT_ID", nullable=true)
+     private Cliente cliente;
+ 
+-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "credito", cascade = CascadeType.ALL)
++    @OneToMany(fetch = FetchType.LAZY,mappedBy = "credito", cascade = CascadeType.ALL)
+     private List<Pagos> pagosList;
+ }
+Index: frontend/credit-application/src/app/app.routes.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import { Routes } from '@angular/router';\r\nimport {ClienteCreateComponent} from \"./clientes/cliente-create/cliente-create.component\";\r\nimport { NavBarComponent } from './utils/nav-bar/nav-bar.component';\r\n\r\nexport const routes: Routes = [\r\n  {path: '', component:ClienteCreateComponent}\r\n];\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/frontend/credit-application/src/app/app.routes.ts b/frontend/credit-application/src/app/app.routes.ts
+--- a/frontend/credit-application/src/app/app.routes.ts	(revision 4c6160972925364bd292428d0d3c1e10e966b236)
++++ b/frontend/credit-application/src/app/app.routes.ts	(date 1714882132574)
+@@ -1,7 +1,9 @@
+ import { Routes } from '@angular/router';
+ import {ClienteCreateComponent} from "./clientes/cliente-create/cliente-create.component";
+ import { NavBarComponent } from './utils/nav-bar/nav-bar.component';
++import { CreditListComponent } from './admin/credit-list/credit-list.component';
+ 
+ export const routes: Routes = [
+-  {path: '', component:ClienteCreateComponent}
++  {path: '', component:ClienteCreateComponent},
++  {path: 'admin-dashboard',component: CreditListComponent}
+ ];
+Index: backend/src/main/java/co/ucentral/CreditAplication/models/Cliente.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package co.ucentral.CreditAplication.models;\r\n\r\nimport jakarta.persistence.*;\r\nimport lombok.AllArgsConstructor;\r\nimport lombok.Data;\r\nimport lombok.NoArgsConstructor;\r\nimport net.sf.jsqlparser.expression.DateTimeLiteralExpression;\r\n\r\nimport java.sql.Date;\r\nimport java.util.List;\r\n\r\n@Entity\r\n@Table(name = \"CLIENTE\")\r\n@Data\r\n@NoArgsConstructor\r\n@AllArgsConstructor\r\npublic class Cliente {\r\n    @Id\r\n    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = \"SEQ_CLIENTES\")\r\n    @SequenceGenerator(name = \"SEQ_CLIENTES\", sequenceName = \"SEQ_CLIENTES\", allocationSize = 1)\r\n    @Column(name = \"CLI_ID\", nullable = false)\r\n    private long id;\r\n    @Column(name = \"CLI_INGRESOS\", nullable = true)\r\n    private double ingresos;\r\n    @Column(name = \"CLI_NOMBRE\", nullable = true)\r\n    private String nombre;\r\n    @Column(name = \"CLI_APELLIDO\", nullable = true)\r\n    private String apellido;\r\n    @Column(name = \"CLI_NUMERO_TELEFONICO\", nullable = true)\r\n    private String numeroTelefonico;\r\n    @Column(name = \"CLI_FECHA_NACIMIENTO\", nullable = true)\r\n    private Date fechaNacimiento;\r\n    @Column(name = \"CLI_DIRRECCION\", nullable = true)\r\n    private String direccion;\r\n    @Column(name = \"CLI_CORREO_ELECTRONICO\", nullable = true)\r\n    private String correoElectronico;\r\n    @Column(name = \"CLI_NUMERO_IDENTIFICACION\", nullable = true)\r\n    private String numeroDeIdentificacion;\r\n\r\n    @OneToMany(fetch = FetchType.LAZY, mappedBy = \"cliente\", cascade = CascadeType.ALL)\r\n    private List<Credito> creditoList;\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/src/main/java/co/ucentral/CreditAplication/models/Cliente.java b/backend/src/main/java/co/ucentral/CreditAplication/models/Cliente.java
+--- a/backend/src/main/java/co/ucentral/CreditAplication/models/Cliente.java	(revision 4c6160972925364bd292428d0d3c1e10e966b236)
++++ b/backend/src/main/java/co/ucentral/CreditAplication/models/Cliente.java	(date 1714889565011)
+@@ -37,6 +37,4 @@
+     @Column(name = "CLI_NUMERO_IDENTIFICACION", nullable = true)
+     private String numeroDeIdentificacion;
+ 
+-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "cliente", cascade = CascadeType.ALL)
+-    private List<Credito> creditoList;
+ }
+Index: backend/src/main/java/co/ucentral/CreditAplication/controllers/CreditoControlador.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package co.ucentral.CreditAplication.controllers;\r\n\r\nimport co.ucentral.CreditAplication.models.Credito;\r\nimport co.ucentral.CreditAplication.services.CreditoService;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.http.HttpStatus;\r\nimport org.springframework.http.ResponseEntity;\r\nimport org.springframework.web.bind.annotation.*;\r\n\r\nimport java.util.List;\r\nimport java.util.Optional;\r\n\r\n@RestController\r\n@RequestMapping(\"Credito\")\r\npublic class CreditoControlador {\r\n\r\n    @Autowired\r\n    CreditoService creditService;\r\n\r\n    @RequestMapping(value = \"/credits\", method = RequestMethod.GET)\r\n    public ResponseEntity<Credito> list() {\r\n        List<Credito> users = creditService.getAll();\r\n        return new ResponseEntity(users, HttpStatus.OK);\r\n    }\r\n\r\n    @RequestMapping(value = \"/credit\", method = RequestMethod.GET)\r\n    public ResponseEntity<Credito> creditoPorId(@RequestParam(value = \"id\") long id) {\r\n        Optional<Credito> creditoOptional = creditService.getById(id);\r\n        if(creditoOptional.isPresent()) {\r\n            return new ResponseEntity(creditoOptional.get(), HttpStatus.OK);\r\n        }\r\n        return new ResponseEntity(HttpStatus.NOT_FOUND);\r\n    }\r\n\r\n    @RequestMapping(value = \"/create\", method = RequestMethod.POST)\r\n    public ResponseEntity<Credito> create(@RequestBody Credito credito) {\r\n        Credito userCreated = creditService.save(credito);\r\n        return new ResponseEntity(userCreated, HttpStatus.CREATED);\r\n    }\r\n\r\n    @RequestMapping(value = \"/delete\", method = RequestMethod.DELETE)\r\n    public ResponseEntity<Credito> delete(@RequestParam(value = \"id\") long id) {\r\n        creditService.delete(id);\r\n        return new ResponseEntity(HttpStatus.OK);\r\n    }\r\n}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/src/main/java/co/ucentral/CreditAplication/controllers/CreditoControlador.java b/backend/src/main/java/co/ucentral/CreditAplication/controllers/CreditoControlador.java
+--- a/backend/src/main/java/co/ucentral/CreditAplication/controllers/CreditoControlador.java	(revision 4c6160972925364bd292428d0d3c1e10e966b236)
++++ b/backend/src/main/java/co/ucentral/CreditAplication/controllers/CreditoControlador.java	(date 1714884048038)
+@@ -1,6 +1,7 @@
+ package co.ucentral.CreditAplication.controllers;
+ 
+ import co.ucentral.CreditAplication.models.Credito;
++import co.ucentral.CreditAplication.models.dtos.CreditStatusChangeRequestDto;
+ import co.ucentral.CreditAplication.services.CreditoService;
+ import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.http.HttpStatus;
+@@ -23,6 +24,12 @@
+         return new ResponseEntity(users, HttpStatus.OK);
+     }
+ 
++    @RequestMapping(value = "/non-approved-credits", method = RequestMethod.GET)
++    public ResponseEntity<Credito> listPendingCredits() {
++        List<Credito> creditoList = creditService.getAllPending();
++        return new ResponseEntity(creditoList, HttpStatus.OK);
++    }
++
+     @RequestMapping(value = "/credit", method = RequestMethod.GET)
+     public ResponseEntity<Credito> creditoPorId(@RequestParam(value = "id") long id) {
+         Optional<Credito> creditoOptional = creditService.getById(id);
+@@ -32,6 +39,12 @@
+         return new ResponseEntity(HttpStatus.NOT_FOUND);
+     }
+ 
++    @RequestMapping(value = "/update-state", method = RequestMethod.PUT)
++    public ResponseEntity changeStatusCredit(@RequestBody CreditStatusChangeRequestDto creditoCreditStatusChangeRequestDto) {
++        creditService.updateCreditState(creditoCreditStatusChangeRequestDto);
++        return ResponseEntity.ok().build();
++    }
++
+     @RequestMapping(value = "/create", method = RequestMethod.POST)
+     public ResponseEntity<Credito> create(@RequestBody Credito credito) {
+         Credito userCreated = creditService.save(credito);

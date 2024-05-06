@@ -37,6 +37,4 @@ public class Cliente {
     @Column(name = "CLI_NUMERO_IDENTIFICACION", nullable = true)
     private String numeroDeIdentificacion;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "cliente", cascade = CascadeType.ALL)
-    private List<Credito> creditoList;
 }
