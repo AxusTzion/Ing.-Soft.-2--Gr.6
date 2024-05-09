@@ -8,4 +8,5 @@ export class Client {
   direccion: string | undefined;
   correoElectronico: string | undefined;
   numeroDeIdentificacion: string | undefined;
+  password: string | undefined;
 }

@@ -2,21 +2,31 @@ import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import { LocalStorageService } from '../../service/local-storage.service';
 import { Router, RouterModule } from '@angular/router';
+import { AuthService } from '../../service/auth.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-nav-bar',
   standalone: true,
-  imports: [MatIconModule, MatToolbarModule, MatButtonModule, RouterModule ],
+  imports: [MatIconModule, MatToolbarModule, MatButtonModule, RouterModule , CommonModule],
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.css'
 })
 export class NavBarComponent {
 
-  constructor(private localStorage : LocalStorageService, private router: Router) {
+  isLoggedIn: boolean = false;
+
+  constructor(private authService: AuthService, private router: Router) {
+    this.authService.isAuthenticated().subscribe((isAuthenticated: boolean) => {
+      console.log(isAuthenticated);
+      this.isLoggedIn = isAuthenticated;
+    });
   }
-  isUserActive(): boolean {
-    return this.localStorage.isUserActive();
+
+  logOut() {
+    this.authService.logout();
+    this.router.navigate(["/"])
   }
+
 }

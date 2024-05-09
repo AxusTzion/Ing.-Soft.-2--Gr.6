@@ -20,7 +20,8 @@ import { Router, RouterModule } from '@angular/router';
 import {MatCardModule} from '@angular/material/card';
 import { ServiceCreditApplicationService } from '../service/service-credit-application.service';
 import { Login } from '../Modelos/login';
-import { LocalStorageService } from '../service/local-storage.service';
+import { AuthService } from '../service/auth.service';
+import { rolesDto } from '../Modelos/rolesDto';
 
 @Component({
   selector: 'app-login',
@@ -52,37 +53,30 @@ export class LoginComponent {
   });
   cliente : any;
 
-  @Input() isAdminLogin: boolean = false;
+  @Input() isAdminLogin: boolean = true;
 
   constructor(private client: ServiceCreditApplicationService, private _snackBar: MatSnackBar,
-              private router: Router, private localstorage: LocalStorageService) {
+              private router: Router, private authService: AuthService) {
   }
 
   submit() {
-    if(this.isAdminLogin) {
-      if (this.form.valid ) {
-        this.client.loginAdmin(this.login).subscribe(res => {
-          this._snackBar.open("Login Correcto", "Ok");
-          this.localstorage.setUser("admin");
-          this.router.navigateByUrl("/admin-dashboard");
-        }, err => {
-          this._snackBar.open("Usuario No Encotrado", "Ok");
-        });
-      }
-    } else {
-      if (this.form.valid ) {
-        this.client.login(this.login).subscribe(res => {
-          this._snackBar.open("Login Correcto", "Ok");
-          this.cliente = res;
-        }, err => {
-          this._snackBar.open("Usuario No Encotrado", "Ok");
-        });
-      }
+    if (this.form.valid ) {
+      this.authService.login(this.login).subscribe(res => {
+        this._snackBar.open("Login Correcto", "Ok");
+        this.cliente = res;
+        this.redirectBasedOnRol(this.authService.getRoles());
+      }, err => {
+        this._snackBar.open("Usuario No Encotrado", "Ok");
+      });
     }
   }
 
-  handleResponse() {
-
+  redirectBasedOnRol(roles: string[]) {
+    if(roles.some(e => e === rolesDto.admin.valueOf())) {
+      this.router.navigate(['/admin-dashboard']);
+    } else {
+      this.router.navigate(['/']);
+    }
   }
   @Input() error: string | null | undefined;
 

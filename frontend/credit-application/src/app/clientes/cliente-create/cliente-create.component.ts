@@ -47,6 +47,7 @@ export class ClienteCreateComponent {
   aceptableAmount: any = null;
   acceptableCredit: any = null;
   monthlyPayment: any = null;
+  hide=true;
   firstFormGroup = this.formBuilder.group({
     identificationNumber: [''],
     name: [''],
@@ -56,6 +57,7 @@ export class ClienteCreateComponent {
     income: [''],
     email: ['',Validators.email],
     address: [''],
+    password : [''],
     mobile: ['',  Validators.pattern('[0-9]{10}')]
   });
 

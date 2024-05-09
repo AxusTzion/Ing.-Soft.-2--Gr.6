@@ -36,5 +36,7 @@ public class Cliente {
     private String correoElectronico;
     @Column(name = "CLI_NUMERO_IDENTIFICACION", nullable = true)
     private String numeroDeIdentificacion;
-
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
 }
