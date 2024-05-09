@@ -5,16 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e675df0-8ae4-420d-a19d-ff95c2f24f37" name="Changes" comment="HU02">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_05_2024_10_12_p__m___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_05_2024_10_12_p__m___Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/configurations/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/configurations/CorsConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/controllers/CreditoControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/controllers/CreditoControlador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/CreditAplicationApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/CreditAplicationApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/controllers/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/controllers/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/controllers/ClienteControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/controllers/ClienteControlador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/models/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/models/Cliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/models/Credito.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/models/Credito.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/repositories/CreditoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/repositories/CreditoRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/services/CreditoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/services/CreditoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/services/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/services/AuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/credit-application/src/app/Modelos/Client.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/credit-application/src/app/Modelos/Client.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/credit-application/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/credit-application/src/app/app.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/credit-application/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/credit-application/src/app/app.routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/credit-application/src/app/clientes/cliente-create/cliente-create.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/credit-application/src/app/clientes/cliente-create/cliente-create.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/credit-application/src/app/clientes/cliente-create/cliente-create.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/credit-application/src/app/clientes/cliente-create/cliente-create.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/credit-application/src/app/clientes/cliente-create/cliente-create.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/credit-application/src/app/clientes/cliente-create/cliente-create.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/credit-application/src/app/login-admin/login-admin.component.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/credit-application/src/app/login-admin/login-admin.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/credit-application/src/app/login-admin/login-admin.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/credit-application/src/app/login-admin/login-admin.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/credit-application/src/app/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/credit-application/src/app/login/login.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/credit-application/src/app/service/local-storage.service.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/credit-application/src/app/service/local-storage.service.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/credit-application/src/app/service/service-credit-application.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/credit-application/src/app/service/service-credit-application.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/credit-application/src/app/utils/nav-bar/nav-bar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/credit-application/src/app/utils/nav-bar/nav-bar.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,17 +37,17 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="HTML File" />
-        <option value="TypeScript File" />
+        <option value="Enum" />
+        <option value="Record" />
         <option value="Class" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/HU-02" />
         <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
@@ -57,6 +70,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -68,33 +84,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Maven.CreditAplication [package].executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.CreditAplicationApplication (1).executor": "Run",
-    "Spring Boot.CreditAplicationApplication.executor": "Run",
-    "git-widget-placeholder": "develop",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Projects/Ing.-Soft.-2--Gr.6/Backend",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2023.3.6\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Maven.CreditAplication [package].executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.CreditAplicationApplication (1).executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.CreditAplicationApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Projects/Ing.-Soft.-2--Gr.6/Backend/src/main/java/co/ucentral/CreditAplication/models&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2023.3.6\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Projects\Ing.-Soft.-2--Gr.6\FrontEnd\credit-application\src\app\admin\credit-list" />
@@ -141,7 +157,8 @@
       <workItem from="1713148323488" duration="6331000" />
       <workItem from="1713325593258" duration="9497000" />
       <workItem from="1713720683247" duration="13887000" />
-      <workItem from="1714872410471" duration="29984000" />
+      <workItem from="1714872410471" duration="49793000" />
+      <workItem from="1715279003102" duration="6699000" />
     </task>
     <task id="LOCAL-00001" summary="Anadir nuevas entidades cliente con repositorio, controllador y service">
       <option name="closed" value="true" />
@@ -199,7 +216,23 @@
       <option name="project" value="LOCAL" />
       <updated>1714932750616</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="HU02">
+      <option name="closed" value="true" />
+      <created>1714954595716</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1714954595716</updated>
+    </task>
+    <task id="LOCAL-00009" summary="HU02">
+      <option name="closed" value="true" />
+      <created>1714954609521</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1714954609521</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -233,25 +266,5 @@
     <MESSAGE value="HU01" />
     <MESSAGE value="HU02" />
     <option name="LAST_COMMIT_MESSAGE" value="HU02" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/Backend/src/main/java/co/ucentral/CreditAplication/controllers/AuthController.java</url>
-          <line>34</line>
-          <properties class="co.ucentral.CreditAplication.controllers.AuthController" method="loginAdmin">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Backend/src/main/java/co/ucentral/CreditAplication/services/AuthService.java</url>
-          <line>15</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

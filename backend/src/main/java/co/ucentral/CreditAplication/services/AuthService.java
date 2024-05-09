@@ -1,18 +1,32 @@
 package co.ucentral.CreditAplication.services;
 
-import org.springframework.beans.factory.annotation.Value;
+import co.ucentral.CreditAplication.models.User;
+import co.ucentral.CreditAplication.models.dtos.SignUpDto;
+import co.ucentral.CreditAplication.models.excetions.InvalidJwtException;
+import co.ucentral.CreditAplication.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AuthService {
-    @Value("${admin.username}")
-    private  String USER_NAME_CONFIG = "";
+public class AuthService implements UserDetailsService {
 
-    @Value("${admin.password}")
-    private String PASSWORD_CONFIG = "";
+    @Autowired
+    UserRepository repository;
 
-    public boolean loginAdmin(String userName, String password) {
+    @Override
+    public UserDetails loadUserByUsername(String username) {
+        return repository.findByLogin(username);
+    }
 
-        return this.USER_NAME_CONFIG.equals(userName) && this.PASSWORD_CONFIG.equals(password);
+    public User signUp(SignUpDto data) throws InvalidJwtException {
+        if (repository.findByLogin(data.login()) != null) {
+            throw new InvalidJwtException("Username already exists");
+        }
+        String encryptedPassword = new BCryptPasswordEncoder().encode(data.password());
+        User newUser = new User(data.login(), encryptedPassword, data.role());
+        return repository.save(newUser);
     }
 }

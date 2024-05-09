@@ -4,13 +4,14 @@ import { Client } from '../Modelos/Client';
 import { Credit } from '../Modelos/Credit';
 import { CreditChangeStatusDto } from '../Modelos/CreditChangeStatusDto';
 import { Login } from '../Modelos/login';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServiceCreditApplicationService {
 
-  url = "http://localhost:8080";
+  url = environment.apiUrl;
   constructor(private http: HttpClient) { }
 
   login(login: Login) {

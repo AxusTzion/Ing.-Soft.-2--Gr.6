@@ -13,6 +13,14 @@
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
+          <mat-label>Contraseña</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'"  formControlName="password" name="password" [required]="true"  value=""  [(ngModel)] = "cliente.password">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
           <mat-label>Correo Electronico</mat-label>
           <input matInput formControlName="email" [required]="true"  value=""  [(ngModel)] = "cliente.correoElectronico" name="correoElectronico">
         </mat-form-field>
@@ -56,9 +64,13 @@
         </tr>
         </table>
 
-        <mat-form-field class="example-full-width">
+        <mat-form-field floatLabel="always" class="example-full-width">
           <mat-label>Ingresos</mat-label>
-          <input formControlName="income" [required]="true" matInput placeholder="1.000.000" [(ngModel)] = "cliente.ingresos" name="income">
+          <input matInput type="number" class="example-right-align" formControlName="income"
+                 [(ngModel)] = "cliente.ingresos" name="income"
+                 [required]="true" placeholder="1.000.000">
+          <span matTextPrefix>$&nbsp;</span>
+          <span matTextSuffix>.00</span>
         </mat-form-field>
 
         <br>
@@ -95,10 +107,13 @@
         </mat-form-field></td>
       </tr></table>
 
-      <mat-form-field class="example-full-width">
+      <mat-form-field floatLabel="always" class="example-full-width">
         <mat-label>Cantidad Solicitada</mat-label>
-        <input matInput [required]="true"  value=""  [(ngModel)] = "credit.cantidadSolicitada"
-               formControlName="amount" name="amount">
+        <input matInput type="number" class="example-right-align"
+               [(ngModel)] = "credit.cantidadSolicitada" name="amount" formControlName="amount"
+               [required]="true" placeholder="1.000.000">
+        <span matTextPrefix>$&nbsp;</span>
+        <span matTextSuffix>.00</span>
         @if (aceptableAmount != null) {
         <mat-error>La cuota aproximada para la cantidad solicitada es de <strong>${{aceptableAmount}}</strong>. Su cuota mensual no puede ser mayor al 70% de su ingreso (<strong>${{monthlyPayment}}</strong>), es
           decir su credito no puede ser mayor a <strong>${{acceptableCredit}}</strong></mat-error>
