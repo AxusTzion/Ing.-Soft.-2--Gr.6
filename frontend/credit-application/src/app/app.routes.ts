@@ -11,5 +11,5 @@ export const routes: Routes = [
   {path: '', component:ClienteCreateComponent},
   {path: 'admin-dashboard',component: CreditListComponent , canActivate: [AuthGuard, AuthAdminGuard] },
   { path: 'login-cliente', component: LoginComponent},
-  { path: 'cliente-dashboard', component: PaymentsListComponent},
+  { path: 'cliente-dashboard/:id', component: PaymentsListComponent},
 ];

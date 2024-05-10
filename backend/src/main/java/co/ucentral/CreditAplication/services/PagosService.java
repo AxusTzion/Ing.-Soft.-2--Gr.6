@@ -24,7 +24,7 @@ public class PagosService implements Serializable {
     }
 
     public List<Pagos> getAllByCliente(long clienteId) {
-        return repository.findByPagosByCreditoClienteId(clienteId);
+        return repository.findAllByCreditoClienteId(clienteId);
     }
 
     public Optional<Pagos> getById(long id) {

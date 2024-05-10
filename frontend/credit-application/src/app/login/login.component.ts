@@ -75,7 +75,7 @@ export class LoginComponent {
     if(roles.some(e => e === rolesDto.admin.valueOf())) {
       this.router.navigate(['/admin-dashboard']);
     } else {
-      this.router.navigate(['/cliente-dashboard']);
+      this.router.navigate(['/cliente-dashboard', this.authService.getId()]);
     }
   }
   @Input() error: string | null | undefined;

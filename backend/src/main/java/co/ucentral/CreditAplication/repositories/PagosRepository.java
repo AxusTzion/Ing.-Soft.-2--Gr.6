@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import java.util.List;
 
 public interface PagosRepository extends JpaRepository<Pagos, Long>, JpaSpecificationExecutor<Pagos> {
-    public List<Pagos> findByPagosByCreditoClienteId(long creditoClienteId);
+    public List<Pagos> findAllByCreditoClienteId(long creditoClienteId);
 }

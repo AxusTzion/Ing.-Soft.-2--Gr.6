@@ -26,7 +26,7 @@ public class DatabaseInitializer implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        if (authService.loadUserByUsername("") == null) {
+        if (authService.loadUserByUsername("admin") == null) {
             authService.signUp(new SignUpDto(this.ADMIN_USER, this.ADMIN_PASSWORD, UserRole.ADMIN));
         }
     }
