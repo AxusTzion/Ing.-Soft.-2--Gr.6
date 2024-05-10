@@ -4,8 +4,12 @@
     <span class="example-spacer"></span>
 
     <button [routerLink]="'login-cliente'" mat-raised-button color="primary" class="example-icon"
-            aria-label="Detalles"  [disabled]="isUserActive()">
+            aria-label="Detalles"  *ngIf="!isLoggedIn">
       Ingresar
+    </button>
+    <button  mat-raised-button color="primary" class="example-icon"
+            aria-label="Detalles"  *ngIf="isLoggedIn" (click)="logOut()" >
+      Salir
     </button>
   </mat-toolbar-row>
 </mat-toolbar>
