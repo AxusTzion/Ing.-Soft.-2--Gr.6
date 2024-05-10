@@ -5,9 +5,11 @@ import { CreditListComponent } from './admin/credit-list/credit-list.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './utils/Guards/AuthGuard';
 import { AuthAdminGuard } from './utils/Guards/AuthAdminGuard';
+import { PaymentsListComponent } from './clientes/payments-list/payments-list.component';
 
 export const routes: Routes = [
   {path: '', component:ClienteCreateComponent},
   {path: 'admin-dashboard',component: CreditListComponent , canActivate: [AuthGuard, AuthAdminGuard] },
   { path: 'login-cliente', component: LoginComponent},
+  { path: 'cliente-dashboard', component: PaymentsListComponent},
 ];

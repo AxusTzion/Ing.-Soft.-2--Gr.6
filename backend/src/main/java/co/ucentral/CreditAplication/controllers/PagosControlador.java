@@ -31,6 +31,12 @@ public class PagosControlador {
         return new ResponseEntity(HttpStatus.NOT_FOUND);
     }
 
+    @RequestMapping(value = "/payment-by-client", method = RequestMethod.GET)
+    public ResponseEntity<List<Pagos>> PagosPorClientId(@RequestParam(value = "id") long id) {
+        List<Pagos> pagos = paymentsService.getAllByCliente(id);
+        return new ResponseEntity(pagos, HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/payments", method = RequestMethod.POST)
     public ResponseEntity<Pagos> create(@RequestBody Pagos Pagos) {
         Pagos userCreated = paymentsService.save(Pagos);

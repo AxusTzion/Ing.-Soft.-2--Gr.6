@@ -23,6 +23,10 @@ public class PagosService implements Serializable {
         return repository.findAll();
     }
 
+    public List<Pagos> getAllByCliente(long clienteId) {
+        return repository.findByPagosByCreditoClienteId(clienteId);
+    }
+
     public Optional<Pagos> getById(long id) {
         return repository.findById(id);
     }

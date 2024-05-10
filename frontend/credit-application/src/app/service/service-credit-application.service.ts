@@ -5,6 +5,7 @@ import { Credit } from '../Modelos/Credit';
 import { CreditChangeStatusDto } from '../Modelos/CreditChangeStatusDto';
 import { Login } from '../Modelos/login';
 import { environment } from '../../environments/environment';
+import { Pagos } from '../Modelos/Pagos';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +34,11 @@ export class ServiceCreditApplicationService {
   getNonApprevedCreditList() {
     return this.http.get<Credit>(this.url + "/Credito/non-approved-credits");
   }
+
+  getPaymentByClientList(clientId : string) {
+    return this.http.get<Pagos>(this.url + "/Pagos/payment-by-client?id=" + clientId);
+  }
+
 
   changeCreditStatus(request: CreditChangeStatusDto) {
     return this.http.put(this.url + "/Credito/update-state", request);
