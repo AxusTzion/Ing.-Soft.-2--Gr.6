@@ -32,7 +32,7 @@ public class AuthConfig {
                         .requestMatchers("/Credito/non-approved-credits").hasRole("ADMIN")
                         .requestMatchers("/Credito/update-state").hasRole("ADMIN")
                         .requestMatchers("/Credito/*").permitAll()
-                        .requestMatchers("/Pagos/*").permitAll()
+                        .requestMatchers("/Pagos/*").hasAnyRole("ADMIN", "USER")
                         .anyRequest().authenticated())
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();

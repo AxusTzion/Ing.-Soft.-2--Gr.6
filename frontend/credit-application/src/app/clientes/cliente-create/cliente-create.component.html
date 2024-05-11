@@ -107,18 +107,31 @@
         </mat-form-field></td>
       </tr></table>
 
-      <mat-form-field floatLabel="always" class="example-full-width">
-        <mat-label>Cantidad Solicitada</mat-label>
-        <input matInput type="number" class="example-right-align"
-               [(ngModel)] = "credit.cantidadSolicitada" name="amount" formControlName="amount"
-               [required]="true" placeholder="1.000.000">
-        <span matTextPrefix>$&nbsp;</span>
-        <span matTextSuffix>.00</span>
-        @if (aceptableAmount != null) {
-        <mat-error>La cuota aproximada para la cantidad solicitada es de <strong>${{aceptableAmount}}</strong>. Su cuota mensual no puede ser mayor al 70% de su ingreso (<strong>${{monthlyPayment}}</strong>), es
+      <table class="example-full-width" cellspacing="0"><tr>
+        <td>    <mat-form-field  class="example-full-width">
+          <mat-label>Plazo en cuotas</mat-label>
+          <mat-select formControlName="plazo" [required]="true"
+                      [(ngModel)] = "credit.diaDePago" name="diaDePago" >
+            <mat-option value="1">Dia 1</mat-option>
+            <mat-option value="4">Dia 4</mat-option>
+            <mat-option value="15">Dia 15</mat-option>
+            <mat-option value="20" >Dia 20</mat-option>
+            <mat-option value="30">Dia 30</mat-option>
+          </mat-select>
+        </mat-form-field></td>
+        <td>         <mat-form-field floatLabel="always" class="example-full-width">
+          <mat-label>Cantidad Solicitada</mat-label>
+          <input matInput type="number" class="example-right-align"
+                 [(ngModel)] = "credit.cantidadSolicitada" name="amount" formControlName="amount"
+                 [required]="true" placeholder="1.000.000">
+          <span matTextPrefix>$&nbsp;</span>
+          <span matTextSuffix>.00</span>
+          @if (aceptableAmount != null) {
+          <mat-error>La cuota aproximada para la cantidad solicitada es de <strong>${{aceptableAmount}}</strong>. Su cuota mensual no puede ser mayor al 70% de su ingreso (<strong>${{monthlyPayment}}</strong>), es
           decir su credito no puede ser mayor a <strong>${{acceptableCredit}}</strong></mat-error>
-        }
-      </mat-form-field>
+          }
+        </mat-form-field></td>
+      </tr></table>
 
       <div>
         <button mat-button matStepperPrevious>Atras</button>

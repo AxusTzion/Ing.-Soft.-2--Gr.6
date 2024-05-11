@@ -10,4 +10,6 @@ import java.util.List;
 public interface CreditoRepository extends JpaRepository<Credito, Long>, JpaSpecificationExecutor<Credito> {
 
     public List<Credito> findByEsAprobadoEquals(CreditoEstadoEnum esAprobado);
+
+    public Credito findByClienteNumeroDeIdentificacion(String clienteId);
 }
