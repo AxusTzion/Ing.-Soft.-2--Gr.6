@@ -1,6 +1,8 @@
 package co.ucentral.CreditAplication.controllers;
 
 import co.ucentral.CreditAplication.models.Credito;
+import co.ucentral.CreditAplication.models.Pagos;
+import co.ucentral.CreditAplication.models.dtos.CreditInfoByClientDto;
 import co.ucentral.CreditAplication.models.dtos.CreditStatusChangeRequestDto;
 import co.ucentral.CreditAplication.services.CreditoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,12 @@ public class CreditoControlador {
     public ResponseEntity<Credito> listPendingCredits() {
         List<Credito> creditoList = creditService.getAllPending();
         return new ResponseEntity(creditoList, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/payment-by-client", method = RequestMethod.GET)
+    public ResponseEntity<CreditInfoByClientDto> PagosPorClientId(@RequestParam(value = "id") String id) {
+        CreditInfoByClientDto pagos = creditService.getCreditInfoByCLientId(id);
+        return new ResponseEntity(pagos, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/credit", method = RequestMethod.GET)

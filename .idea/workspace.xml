@@ -4,11 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7e675df0-8ae4-420d-a19d-ff95c2f24f37" name="Changes" comment="HU16">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_7_05_2024_9_01_p__m___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_7_05_2024_9_01_p__m___Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_9_05_2024_8_22_p__m___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_9_05_2024_8_22_p__m___Changes_.xml" afterDir="false" />
+    <list default="true" id="7e675df0-8ae4-420d-a19d-ff95c2f24f37" name="Changes" comment="HU-05-p">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/credit-application/src/app/clientes/payments-list/payments-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/credit-application/src/app/clientes/payments-list/payments-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/controllers/CreditoControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/controllers/CreditoControlador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/controllers/PagosControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/controllers/PagosControlador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/models/Credito.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/models/Credito.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/repositories/CreditoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/repositories/CreditoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/repositories/PagosRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/repositories/PagosRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/services/CreditoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/services/CreditoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/services/PagosService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/services/PagosService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/credit-application/src/app/Modelos/Credit.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/credit-application/src/app/Modelos/Credit.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/credit-application/src/app/Modelos/Pagos.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/credit-application/src/app/Modelos/Pagos.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/credit-application/src/app/clientes/cliente-create/cliente-create.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/credit-application/src/app/clientes/cliente-create/cliente-create.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/credit-application/src/app/clientes/payments-list/payments-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/credit-application/src/app/clientes/payments-list/payments-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/credit-application/src/app/clientes/payments-list/payments-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/credit-application/src/app/clientes/payments-list/payments-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/credit-application/src/app/service/service-credit-application.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/credit-application/src/app/service/service-credit-application.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +30,8 @@
       <list>
         <option value="HTML File" />
         <option value="Enum" />
-        <option value="Record" />
         <option value="Class" />
+        <option value="Record" />
         <option value="TypeScript File" />
       </list>
     </option>
@@ -29,7 +39,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/HU16" />
+        <entry key="$PROJECT_DIR$" value="feature/HU07" />
         <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
@@ -41,6 +51,9 @@
     &quot;assignee&quot;: &quot;BrayanOvalle16&quot;
   }
 }</component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="ee32e383-3b18-43a2-a16f-e71ed65e725d" />
+  </component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -78,7 +91,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.CreditAplicationApplication (1).executor": "Run",
     "Spring Boot.CreditAplicationApplication.executor": "Run",
-    "git-widget-placeholder": "develop",
+    "git-widget-placeholder": "feature/HU055",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Projects/Ing.-Soft.-2--Gr.6/Backend/src/main/java/co/ucentral/CreditAplication/models",
     "node.js.detected.package.eslint": "true",
@@ -89,6 +102,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "vcs.Perforce",
     "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2023.3.6\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
@@ -140,7 +154,7 @@
       <workItem from="1713325593258" duration="9497000" />
       <workItem from="1713720683247" duration="13887000" />
       <workItem from="1714872410471" duration="49793000" />
-      <workItem from="1715279003102" duration="8962000" />
+      <workItem from="1715279003102" duration="31883000" />
     </task>
     <task id="LOCAL-00001" summary="Anadir nuevas entidades cliente con repositorio, controllador y service">
       <option name="closed" value="true" />
@@ -238,13 +252,60 @@
       <option name="project" value="LOCAL" />
       <updated>1715317431563</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="HU16">
+      <option name="closed" value="true" />
+      <created>1715319077645</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1715319077646</updated>
+    </task>
+    <task id="LOCAL-00014" summary="HU-05">
+      <option name="closed" value="true" />
+      <created>1715462307008</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1715462307009</updated>
+    </task>
+    <task id="LOCAL-00015" summary="HU-05">
+      <option name="closed" value="true" />
+      <created>1715462522713</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1715462522713</updated>
+    </task>
+    <task id="LOCAL-00016" summary="HU-05-p">
+      <option name="closed" value="true" />
+      <created>1715462829663</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1715462829663</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/feature/HU07" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
@@ -255,7 +316,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="develop" />
+                        <option value="origin/feature/HU07" />
                       </list>
                     </value>
                   </entry>
@@ -272,6 +333,19 @@
     <MESSAGE value="HU01" />
     <MESSAGE value="HU02" />
     <MESSAGE value="HU16" />
-    <option name="LAST_COMMIT_MESSAGE" value="HU16" />
+    <MESSAGE value="HU-05" />
+    <MESSAGE value="HU-05-p" />
+    <option name="LAST_COMMIT_MESSAGE" value="HU-05-p" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Backend/src/main/java/co/ucentral/CreditAplication/services/CreditoService.java</url>
+          <line>104</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

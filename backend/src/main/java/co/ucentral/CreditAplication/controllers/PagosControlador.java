@@ -32,10 +32,11 @@ public class PagosControlador {
     }
 
     @RequestMapping(value = "/payment-by-client", method = RequestMethod.GET)
-    public ResponseEntity<List<Pagos>> PagosPorClientId(@RequestParam(value = "id") long id) {
+    public ResponseEntity<List<Pagos>> PagosPorClientId(@RequestParam(value = "id") String id) {
         List<Pagos> pagos = paymentsService.getAllByCliente(id);
         return new ResponseEntity(pagos, HttpStatus.OK);
     }
+
 
     @RequestMapping(value = "/payments", method = RequestMethod.POST)
     public ResponseEntity<Pagos> create(@RequestBody Pagos Pagos) {

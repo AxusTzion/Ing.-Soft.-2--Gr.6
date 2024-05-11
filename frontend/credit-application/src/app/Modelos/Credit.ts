@@ -7,4 +7,5 @@ export class Credit {
   numeroDeCuotas: string | undefined;
   paymentDate: string | undefined;
   cliente : Client | undefined;
+  diaDePago : string | undefined;
 }

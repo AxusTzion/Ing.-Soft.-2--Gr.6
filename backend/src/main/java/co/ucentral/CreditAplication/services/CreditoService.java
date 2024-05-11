@@ -3,14 +3,20 @@ package co.ucentral.CreditAplication.services;
 import co.ucentral.CreditAplication.models.Credito;
 
 import co.ucentral.CreditAplication.models.CreditoEstadoEnum;
+import co.ucentral.CreditAplication.models.Pagos;
 import co.ucentral.CreditAplication.models.TipoCredito;
+import co.ucentral.CreditAplication.models.dtos.CreditInfoByClientDto;
 import co.ucentral.CreditAplication.models.dtos.CreditStatusChangeRequestDto;
+import co.ucentral.CreditAplication.repositories.PagosRepository;
+import org.hibernate.type.descriptor.DateTimeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import co.ucentral.CreditAplication.repositories.CreditoRepository;
 import org.springframework.util.ObjectUtils;
 
 import java.io.Serializable;
+import java.sql.Date;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +24,9 @@ import java.util.Optional;
 public class CreditoService implements Serializable {
     @Autowired
     CreditoRepository repository;
+
+    @Autowired
+    PagosRepository pagosRepository;
 
     public Credito save(Credito credito) {
         if(!ObjectUtils.isEmpty(credito.getTipo())){
@@ -52,6 +61,59 @@ public class CreditoService implements Serializable {
     }
 
 
+    public CreditInfoByClientDto getCreditInfoByCLientId(String clientId) {
+        Credito credito = this.repository.findByClienteNumeroDeIdentificacion(clientId);
+        if(credito != null) {
+            Double tasaInteres = calculateInterestRate(credito.getTipo());
+            Double pagoTotal =getTotalPayment(credito);
+            Date fechaPago = getCurrentPaymertDate(credito);
+            Double pagoMinimo = getMinumumPayment(credito);
+            return new CreditInfoByClientDto(credito.getId(), pagoMinimo,
+                    pagoTotal, fechaPago, tasaInteres, credito.getCantidadSolicitada());
+        }
+        return null;
+    }
+
+    protected Double getMinumumPayment(Credito credito) {
+        var tasaInteresMensual = credito.getPorcentajeInteres() / 100;
+        return credito.getCantidadSolicitada() * (tasaInteresMensual / (1 - Math.pow(1 + tasaInteresMensual, - credito.getNumeroDeCuotas())));
+    }
+    protected Date getCurrentPaymertDate(Credito credito) {
+        List<Pagos> pagos = this.pagosRepository.findAllByCreditoId(credito.getId());
+        int diaPago = credito.getDiaDePago();
+        Date diaPagoFecha = new Date(System.currentTimeMillis());
+        diaPagoFecha.setDate(diaPago);
+
+        if(pagos != null && !pagos.isEmpty()) {
+            Date finalDiaPagoFecha = diaPagoFecha;
+            Boolean esMesPago = pagos.stream().anyMatch(x -> x.getCredito().getId() == credito.getId() &&
+                    x.getFechaPago().getMonth() == finalDiaPagoFecha.getMonth());
+            if(esMesPago) {
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(diaPagoFecha);
+                calendar.add(Calendar.MONTH, 1);
+                diaPagoFecha = new Date(calendar.getTimeInMillis()) ;
+            }
+        }
+        return  diaPagoFecha;
+    }
+    protected Double getTotalPayment(Credito credito) {
+        Double cantidadSolicitada = credito.getCantidadSolicitada();
+        List<Pagos> pagos = pagosRepository.findAllByCreditoId(credito.getId());
+        Double totalPago = getTotalPago(pagos);
+
+        Double totalpago = cantidadSolicitada - totalPago;
+        Double pagoMinimo = getMinumumPayment(credito);
+
+        Double totalPagoMenosUnaCuota = totalpago - (totalpago / credito.getNumeroDeCuotas());
+        return totalPagoMenosUnaCuota + pagoMinimo;
+    }
+
+    protected Double getTotalPago(List<Pagos> pagos) {
+        return pagos.stream()
+                .map(x -> x.getCantidad())
+                .reduce(0d, Double::sum);
+    }
     protected Double calculateInterestRate(TipoCredito tipoCredito) {
         switch (tipoCredito){
             case Vivienda -> {
