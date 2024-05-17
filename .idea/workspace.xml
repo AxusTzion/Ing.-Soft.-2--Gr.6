@@ -4,21 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7e675df0-8ae4-420d-a19d-ff95c2f24f37" name="Changes" comment="HU-05-p">
+    <list default="true" id="7e675df0-8ae4-420d-a19d-ff95c2f24f37" name="Changes" comment="HU-05">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/controllers/CreditoControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/controllers/CreditoControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/controllers/PagosControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/controllers/PagosControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/models/Credito.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/models/Credito.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/repositories/CreditoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/repositories/CreditoRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/repositories/PagosRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/repositories/PagosRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/services/CreditoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/services/CreditoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/services/PagosService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/ucentral/CreditAplication/services/PagosService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/credit-application/src/app/Modelos/Credit.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/credit-application/src/app/Modelos/Credit.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/credit-application/src/app/Modelos/Pagos.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/credit-application/src/app/Modelos/Pagos.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/credit-application/src/app/clientes/cliente-create/cliente-create.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/credit-application/src/app/clientes/cliente-create/cliente-create.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/credit-application/src/app/clientes/payments-list/payments-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/credit-application/src/app/clientes/payments-list/payments-list.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/credit-application/src/app/clientes/payments-list/payments-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/credit-application/src/app/clientes/payments-list/payments-list.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/credit-application/src/app/service/service-credit-application.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/credit-application/src/app/service/service-credit-application.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/test/java/co/ucentral/CreditAplication/CreditAplicationApplicationTests.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,13 +22,14 @@
         <option value="Class" />
         <option value="Record" />
         <option value="TypeScript File" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/HU07" />
+        <entry key="$PROJECT_DIR$" value="feature/HU055" />
         <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
@@ -52,7 +42,7 @@
   }
 }</component>
   <component name="GithubDefaultAccount">
-    <option name="defaultAccountId" value="ee32e383-3b18-43a2-a16f-e71ed65e725d" />
+    <option name="defaultAccountId" value="1710297e-8181-418c-8b3e-fe442f90fc1b" />
   </component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
@@ -82,6 +72,10 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "DefaultHtmlFileTemplate": "HTML File",
+    "JUnit.ClienteServiceTest.executor": "Run",
+    "JUnit.ClienteServiceTest.testDeleteCliente.executor": "Run",
+    "JUnit.ClienteServiceTest.testGetAllClientes().executor": "Run",
+    "JUnit.ClienteServiceTest.testGetAllClientes.executor": "Run",
     "Maven.CreditAplication [package].executor": "Run",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
@@ -91,7 +85,9 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.CreditAplicationApplication (1).executor": "Run",
     "Spring Boot.CreditAplicationApplication.executor": "Run",
-    "git-widget-placeholder": "feature/HU055",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "develop",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Projects/Ing.-Soft.-2--Gr.6/Backend/src/main/java/co/ucentral/CreditAplication/models",
     "node.js.detected.package.eslint": "true",
@@ -102,7 +98,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "vcs.Perforce",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
     "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2023.3.6\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
@@ -111,8 +107,81 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Projects\Ing.-Soft.-2--Gr.6\FrontEnd\credit-application\src\app\admin\credit-list" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="co.ucentral.CreditAplication.services" />
+      <recent name="co.ucentral.CreditAplication.repositories" />
+    </key>
   </component>
   <component name="RunManager" selected="Spring Boot.CreditAplicationApplication (1)">
+    <configuration name="ClienteServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CreditAplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="co.ucentral.CreditAplication.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="co.ucentral.CreditAplication.services" />
+      <option name="MAIN_CLASS_NAME" value="co.ucentral.CreditAplication.services.ClienteServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ClienteServiceTest.testDeleteCliente" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CreditAplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="co.ucentral.CreditAplication.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="co.ucentral.CreditAplication.services" />
+      <option name="MAIN_CLASS_NAME" value="co.ucentral.CreditAplication.services.ClienteServiceTest" />
+      <option name="METHOD_NAME" value="testDeleteCliente" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ClienteServiceTest.testGetAllClientes" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CreditAplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="co.ucentral.CreditAplication.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="co.ucentral.CreditAplication.services" />
+      <option name="MAIN_CLASS_NAME" value="co.ucentral.CreditAplication.services.ClienteServiceTest" />
+      <option name="METHOD_NAME" value="testGetAllClientes" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ClienteServiceTest.testGetAllClientes()" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CreditAplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="co.ucentral.CreditAplication.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="co.ucentral.CreditAplication.services" />
+      <option name="MAIN_CLASS_NAME" value="co.ucentral.CreditAplication.services.ClienteServiceTest" />
+      <option name="METHOD_NAME" value="testGetAllClientes" />
+      <option name="TEST_OBJECT" value="uniqueId" />
+      <uniqueIds>
+        <uniqueId value="[engine:junit-jupiter]/[class:co.ucentral.CreditAplication.services.ClienteServiceTest]/[method:testGetAllClientes()]" />
+      </uniqueIds>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CreditAplicationApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="CreditAplication" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="co.ucentral.CreditAplication.CreditAplicationApplication" />
@@ -127,9 +196,21 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="JUnit.ClienteServiceTest" />
+      <item itemvalue="JUnit.ClienteServiceTest.testDeleteCliente" />
+      <item itemvalue="JUnit.ClienteServiceTest.testGetAllClientes" />
+      <item itemvalue="JUnit.ClienteServiceTest.testGetAllClientes()" />
       <item itemvalue="Spring Boot.CreditAplicationApplication (1)" />
       <item itemvalue="Spring Boot.CreditAplicationApplication" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.ClienteServiceTest" />
+        <item itemvalue="JUnit.ClienteServiceTest.testGetAllClientes()" />
+        <item itemvalue="JUnit.ClienteServiceTest.testGetAllClientes" />
+        <item itemvalue="JUnit.ClienteServiceTest.testDeleteCliente" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -154,7 +235,7 @@
       <workItem from="1713325593258" duration="9497000" />
       <workItem from="1713720683247" duration="13887000" />
       <workItem from="1714872410471" duration="49793000" />
-      <workItem from="1715279003102" duration="31883000" />
+      <workItem from="1715279003102" duration="35102000" />
     </task>
     <task id="LOCAL-00001" summary="Anadir nuevas entidades cliente con repositorio, controllador y service">
       <option name="closed" value="true" />
@@ -284,7 +365,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715462829663</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="HU-05">
+      <option name="closed" value="true" />
+      <created>1715462907247</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1715462907247</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -316,7 +405,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/feature/HU07" />
+                        <option value="develop" />
                       </list>
                     </value>
                   </entry>
@@ -333,19 +422,8 @@
     <MESSAGE value="HU01" />
     <MESSAGE value="HU02" />
     <MESSAGE value="HU16" />
-    <MESSAGE value="HU-05" />
     <MESSAGE value="HU-05-p" />
-    <option name="LAST_COMMIT_MESSAGE" value="HU-05-p" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Backend/src/main/java/co/ucentral/CreditAplication/services/CreditoService.java</url>
-          <line>104</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="HU-05" />
+    <option name="LAST_COMMIT_MESSAGE" value="HU-05" />
   </component>
 </project>
