@@ -1,13 +1,11 @@
-package co.ucentral.CreditAplication.models;
+package co.ucentral.creditaplication.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import net.sf.jsqlparser.expression.DateTimeLiteralExpression;
 
 import java.sql.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "CLIENTE")

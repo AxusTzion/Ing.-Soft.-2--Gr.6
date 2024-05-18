@@ -1,6 +1,6 @@
-package co.ucentral.CreditAplication.models;
+package co.ucentral.creditaplication.models;
 
-import co.ucentral.CreditAplication.models.enums.UserRole;
+import co.ucentral.creditaplication.models.enums.UserRole;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;

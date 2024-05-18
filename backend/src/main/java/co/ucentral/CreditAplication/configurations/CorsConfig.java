@@ -1,4 +1,4 @@
-package co.ucentral.CreditAplication.configurations;
+package co.ucentral.creditaplication.configurations;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;

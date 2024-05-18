@@ -1,6 +1,6 @@
-package co.ucentral.CreditAplication.utils;
+package co.ucentral.creditaplication.utils;
 
-import co.ucentral.CreditAplication.models.User;
+import co.ucentral.creditaplication.models.User;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
@@ -16,11 +16,11 @@ import java.util.List;
 @Service
 public class TokenProvider {
     @Value("${security.jwt.token.secret-key}")
-    private String JWT_SECRET;
+    private String jwtSecret;
 
     public String generateAccessToken(User user) {
         try {
-            Algorithm algorithm = Algorithm.HMAC256(JWT_SECRET);
+            Algorithm algorithm = Algorithm.HMAC256(this.jwtSecret);
             return JWT.create()
                     .withSubject(user.getUsername())
                     .withClaim("username", user.getUsername())
@@ -34,7 +34,7 @@ public class TokenProvider {
 
     public String validateToken(String token) {
         try {
-            Algorithm algorithm = Algorithm.HMAC256(JWT_SECRET);
+            Algorithm algorithm = Algorithm.HMAC256(this.jwtSecret);
             return JWT.require(algorithm)
                     .build()
                     .verify(token)

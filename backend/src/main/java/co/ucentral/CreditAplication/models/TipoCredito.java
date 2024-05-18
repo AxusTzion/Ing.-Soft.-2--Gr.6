@@ -1,5 +1,5 @@
-package co.ucentral.CreditAplication.models;
+package co.ucentral.creditaplication.models;
 
 public enum TipoCredito {
-    Vivienda, Vehiculo, CompraDeCartera, Estudio, LibreInversion;
+    VIVIENDA, VEHICULO, COMPRA_DE_CARTERA, ESTUDIO, LIBREINVERSION;
 }

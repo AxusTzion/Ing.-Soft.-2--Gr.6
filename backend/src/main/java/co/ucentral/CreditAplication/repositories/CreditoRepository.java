@@ -1,7 +1,7 @@
-package co.ucentral.CreditAplication.repositories;
+package co.ucentral.creditaplication.repositories;
 
-import co.ucentral.CreditAplication.models.Credito;
-import co.ucentral.CreditAplication.models.CreditoEstadoEnum;
+import co.ucentral.creditaplication.models.Credito;
+import co.ucentral.creditaplication.models.CreditoEstadoEnum;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 

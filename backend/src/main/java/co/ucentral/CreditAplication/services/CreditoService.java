@@ -1,17 +1,15 @@
-package co.ucentral.CreditAplication.services;
+package co.ucentral.creditaplication.services;
 
-import co.ucentral.CreditAplication.models.Credito;
+import co.ucentral.creditaplication.models.Credito;
 
-import co.ucentral.CreditAplication.models.CreditoEstadoEnum;
-import co.ucentral.CreditAplication.models.Pagos;
-import co.ucentral.CreditAplication.models.TipoCredito;
-import co.ucentral.CreditAplication.models.dtos.CreditInfoByClientDto;
-import co.ucentral.CreditAplication.models.dtos.CreditStatusChangeRequestDto;
-import co.ucentral.CreditAplication.repositories.PagosRepository;
-import org.hibernate.type.descriptor.DateTimeUtils;
-import org.springframework.beans.factory.annotation.Autowired;
+import co.ucentral.creditaplication.models.CreditoEstadoEnum;
+import co.ucentral.creditaplication.models.Pagos;
+import co.ucentral.creditaplication.models.TipoCredito;
+import co.ucentral.creditaplication.models.dtos.CreditInfoByClientDto;
+import co.ucentral.creditaplication.models.dtos.CreditStatusChangeRequestDto;
+import co.ucentral.creditaplication.repositories.PagosRepository;
 import org.springframework.stereotype.Service;
-import co.ucentral.CreditAplication.repositories.CreditoRepository;
+import co.ucentral.creditaplication.repositories.CreditoRepository;
 import org.springframework.util.ObjectUtils;
 
 import java.io.Serializable;
@@ -22,11 +20,16 @@ import java.util.Optional;
 
 @Service
 public class CreditoService implements Serializable {
-    @Autowired
+    final
     CreditoRepository repository;
 
-    @Autowired
+    final
     PagosRepository pagosRepository;
+
+    public CreditoService(CreditoRepository repository, PagosRepository pagosRepository) {
+        this.repository = repository;
+        this.pagosRepository = pagosRepository;
+    }
 
     public Credito save(Credito credito) {
         if(!ObjectUtils.isEmpty(credito.getTipo())){
@@ -88,7 +91,7 @@ public class CreditoService implements Serializable {
             Date finalDiaPagoFecha = diaPagoFecha;
             Boolean esMesPago = pagos.stream().anyMatch(x -> x.getCredito().getId() == credito.getId() &&
                     x.getFechaPago().getMonth() == finalDiaPagoFecha.getMonth());
-            if(esMesPago) {
+            if(Boolean.TRUE.equals(esMesPago)) {
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTime(diaPagoFecha);
                 calendar.add(Calendar.MONTH, 1);
@@ -116,19 +119,19 @@ public class CreditoService implements Serializable {
     }
     protected Double calculateInterestRate(TipoCredito tipoCredito) {
         switch (tipoCredito){
-            case Vivienda -> {
+            case VIVIENDA -> {
                 return 1.1;
             }
-            case Estudio -> {
+            case ESTUDIO -> {
                 return 0.9;
             }
-            case Vehiculo -> {
+            case VEHICULO -> {
                 return 1.7;
             }
-            case CompraDeCartera -> {
+            case COMPRA_DE_CARTERA -> {
                 return 0.8;
             }
-            case LibreInversion -> {
+            case LIBREINVERSION -> {
                 return 1.5;
             }
             default -> {

@@ -1,4 +1,4 @@
-package co.ucentral.CreditAplication.models;
+package co.ucentral.creditaplication.models;
 
 public enum CreditoEstadoEnum {
     PENDIENTE, APPROVADO, RECHAZADO;

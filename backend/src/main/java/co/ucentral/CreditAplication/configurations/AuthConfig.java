@@ -1,6 +1,6 @@
-package co.ucentral.CreditAplication.configurations;
+package co.ucentral.creditaplication.configurations;
 
-import co.ucentral.CreditAplication.utils.SecurityFilter;
+import co.ucentral.creditaplication.utils.SecurityFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,9 +18,13 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 public class AuthConfig {
-    @Autowired
     SecurityFilter securityFilter;
 
+    @Autowired
+    public AuthConfig(SecurityFilter securityFilter) {
+        this.securityFilter = securityFilter;
+    }
+    private static final String ADMIN = "ADMIN";
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
@@ -29,10 +33,10 @@ public class AuthConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.POST, "/api/v1/auth/*").permitAll()
                         .requestMatchers("/Cliente/*").permitAll()
-                        .requestMatchers("/Credito/non-approved-credits").hasRole("ADMIN")
-                        .requestMatchers("/Credito/update-state").hasRole("ADMIN")
+                        .requestMatchers("/Credito/non-approved-credits").hasRole(AuthConfig.ADMIN)
+                        .requestMatchers("/Credito/update-state").hasRole(AuthConfig.ADMIN)
                         .requestMatchers("/Credito/*").permitAll()
-                        .requestMatchers("/Pagos/*").hasAnyRole("ADMIN", "USER")
+                        .requestMatchers("/Pagos/*").hasAnyRole(AuthConfig.ADMIN, "USER")
                         .anyRequest().authenticated())
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();

@@ -1,4 +1,4 @@
-package co.ucentral.CreditAplication.models.dtos;
+package co.ucentral.creditaplication.models.dtos;
 
 import java.sql.Date;
 

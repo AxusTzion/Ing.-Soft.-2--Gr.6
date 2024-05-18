@@ -1,6 +1,6 @@
-package co.ucentral.CreditAplication.repositories;
+package co.ucentral.creditaplication.repositories;
 
-import co.ucentral.CreditAplication.models.Pagos;
+import co.ucentral.creditaplication.models.Pagos;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 

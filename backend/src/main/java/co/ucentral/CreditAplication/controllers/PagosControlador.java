@@ -1,6 +1,6 @@
-package co.ucentral.CreditAplication.controllers;
-import co.ucentral.CreditAplication.models.Pagos;
-import co.ucentral.CreditAplication.services.PagosService;
+package co.ucentral.creditaplication.controllers;
+import co.ucentral.creditaplication.models.Pagos;
+import co.ucentral.creditaplication.services.PagosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,41 +13,45 @@ import java.util.Optional;
 @RequestMapping("Pagos")
 public class PagosControlador {
 
-    @Autowired
+    final
     PagosService paymentsService;
 
-    @RequestMapping(value = "/payments", method = RequestMethod.GET)
-    public ResponseEntity<Pagos> list() {
+    public PagosControlador(PagosService paymentsService) {
+        this.paymentsService = paymentsService;
+    }
+
+    @GetMapping(value = "/payments")
+    public ResponseEntity<List<Pagos>> list() {
         List<Pagos> users = paymentsService.getAll();
-        return new ResponseEntity(users, HttpStatus.OK);
+        return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/payment", method = RequestMethod.GET)
-    public ResponseEntity<Pagos> PagosPorId(@RequestParam(value = "id") long id) {
-        Optional<Pagos> PagosOptional = paymentsService.getById(id);
-        if(PagosOptional.isPresent()) {
-            return new ResponseEntity(PagosOptional.get(), HttpStatus.OK);
+    @GetMapping(value = "/payment")
+    public ResponseEntity<Pagos> pagosPorId(@RequestParam(value = "id") long id) {
+        Optional<Pagos> pagosOptional = paymentsService.getById(id);
+        if(pagosOptional.isPresent()) {
+            return new ResponseEntity<>(pagosOptional.get(), HttpStatus.OK);
         }
-        return new ResponseEntity(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @RequestMapping(value = "/payment-by-client", method = RequestMethod.GET)
-    public ResponseEntity<List<Pagos>> PagosPorClientId(@RequestParam(value = "id") String id) {
+    @GetMapping(value = "/payment-by-client")
+    public ResponseEntity<List<Pagos>> pagosPorClientId(@RequestParam(value = "id") String id) {
         List<Pagos> pagos = paymentsService.getAllByCliente(id);
-        return new ResponseEntity(pagos, HttpStatus.OK);
+        return new ResponseEntity<>(pagos, HttpStatus.OK);
     }
 
 
-    @RequestMapping(value = "/payments", method = RequestMethod.POST)
-    public ResponseEntity<Pagos> create(@RequestBody Pagos Pagos) {
-        Pagos userCreated = paymentsService.save(Pagos);
-        return new ResponseEntity(userCreated, HttpStatus.CREATED);
+    @PostMapping(value = "/payments")
+    public ResponseEntity<Pagos> create(@RequestBody Pagos pagos) {
+        Pagos userCreated = paymentsService.save(pagos);
+        return new ResponseEntity<>(userCreated, HttpStatus.CREATED);
     }
 
-    @RequestMapping(value = "/payments", method = RequestMethod.DELETE)
+    @DeleteMapping(value = "/payments")
     public ResponseEntity<Pagos> delete(@RequestParam(value = "id") long id) {
         paymentsService.delete(id);
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
 

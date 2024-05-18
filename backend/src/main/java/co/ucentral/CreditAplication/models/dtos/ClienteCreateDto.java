@@ -1,7 +1,5 @@
-package co.ucentral.CreditAplication.models.dtos;
+package co.ucentral.creditaplication.models.dtos;
 
-import co.ucentral.CreditAplication.models.Cliente;
-import jakarta.persistence.*;
 import lombok.Data;
 
 import java.sql.Date;

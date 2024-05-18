@@ -1,7 +1,7 @@
-package co.ucentral.CreditAplication.configurations;
-import co.ucentral.CreditAplication.models.dtos.SignUpDto;
-import co.ucentral.CreditAplication.models.enums.UserRole;
-import co.ucentral.CreditAplication.services.AuthService;
+package co.ucentral.creditaplication.configurations;
+import co.ucentral.creditaplication.models.dtos.SignUpDto;
+import co.ucentral.creditaplication.models.enums.UserRole;
+import co.ucentral.creditaplication.services.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
@@ -14,10 +14,10 @@ public class DatabaseInitializer implements ApplicationRunner {
     private final AuthService authService;
 
     @Value("${admin.username}")
-    private String ADMIN_USER;
+    private String adminUser;
 
     @Value("${admin.password}")
-    private String ADMIN_PASSWORD;
+    private String adminPassword;
 
     @Autowired
     public DatabaseInitializer(AuthService authService) {
@@ -27,7 +27,7 @@ public class DatabaseInitializer implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         if (authService.loadUserByUsername("admin") == null) {
-            authService.signUp(new SignUpDto(this.ADMIN_USER, this.ADMIN_PASSWORD, UserRole.ADMIN));
+            authService.signUp(new SignUpDto(this.adminUser, this.adminPassword, UserRole.ADMIN));
         }
     }
 }

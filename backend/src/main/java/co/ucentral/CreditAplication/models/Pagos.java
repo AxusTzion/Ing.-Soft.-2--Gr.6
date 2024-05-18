@@ -1,4 +1,4 @@
-package co.ucentral.CreditAplication.models;
+package co.ucentral.creditaplication.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

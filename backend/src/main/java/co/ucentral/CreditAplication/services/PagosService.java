@@ -1,10 +1,10 @@
-package co.ucentral.CreditAplication.services;
+package co.ucentral.creditaplication.services;
 
-import co.ucentral.CreditAplication.models.Pagos;
+import co.ucentral.creditaplication.models.Pagos;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import co.ucentral.CreditAplication.repositories.PagosRepository;
+import co.ucentral.creditaplication.repositories.PagosRepository;
 
 import java.io.Serializable;
 import java.util.List;
@@ -12,8 +12,12 @@ import java.util.Optional;
 
 @Service
 public class PagosService implements Serializable {
-    @Autowired
+    final
     PagosRepository repository;
+
+    public PagosService(PagosRepository repository) {
+        this.repository = repository;
+    }
 
     public Pagos save(Pagos pagos) {
         return repository.save(pagos);

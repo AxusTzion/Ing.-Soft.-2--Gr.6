@@ -1,11 +1,11 @@
-package co.ucentral.CreditAplication.services;
+package co.ucentral.creditaplication.services;
 
-import co.ucentral.CreditAplication.dtos.CustomerLoginDto;
-import co.ucentral.CreditAplication.models.Cliente;
+import co.ucentral.creditaplication.dtos.CustomerLoginDto;
+import co.ucentral.creditaplication.models.Cliente;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import co.ucentral.CreditAplication.repositories.ClienteRepository;
+import co.ucentral.creditaplication.repositories.ClienteRepository;
 
 import java.io.Serializable;
 import java.util.List;
@@ -13,15 +13,19 @@ import java.util.Optional;
 
 @Service
 public class ClienteService implements Serializable {
-    @Autowired
+    final
     ClienteRepository repository;
+
+    public ClienteService(ClienteRepository repository) {
+        this.repository = repository;
+    }
 
     public Cliente save(Cliente cliente) {
         return repository.save(cliente);
     }
 
     public Cliente login(CustomerLoginDto login) {
-        return repository.findByNumeroDeIdentificacion(login.username);
+        return repository.findByNumeroDeIdentificacion(login.getUsername());
     }
 
     public List<Cliente> getAll() {

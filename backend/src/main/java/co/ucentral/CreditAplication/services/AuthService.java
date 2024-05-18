@@ -1,9 +1,9 @@
-package co.ucentral.CreditAplication.services;
+package co.ucentral.creditaplication.services;
 
-import co.ucentral.CreditAplication.models.User;
-import co.ucentral.CreditAplication.models.dtos.SignUpDto;
-import co.ucentral.CreditAplication.models.excetions.InvalidJwtException;
-import co.ucentral.CreditAplication.repositories.UserRepository;
+import co.ucentral.creditaplication.models.User;
+import co.ucentral.creditaplication.models.dtos.SignUpDto;
+import co.ucentral.creditaplication.models.excetions.InvalidJwtException;
+import co.ucentral.creditaplication.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -13,8 +13,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class AuthService implements UserDetailsService {
 
-    @Autowired
+    final
     UserRepository repository;
+
+    public AuthService(UserRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) {

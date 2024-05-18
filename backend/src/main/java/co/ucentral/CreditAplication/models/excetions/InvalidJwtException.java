@@ -1,4 +1,4 @@
-package co.ucentral.CreditAplication.models.excetions;
+package co.ucentral.creditaplication.models.excetions;
 
 public class InvalidJwtException extends Exception{
 

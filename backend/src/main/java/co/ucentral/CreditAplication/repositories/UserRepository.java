@@ -1,6 +1,6 @@
-package co.ucentral.CreditAplication.repositories;
+package co.ucentral.creditaplication.repositories;
 
-import co.ucentral.CreditAplication.models.User;
+import co.ucentral.creditaplication.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 

@@ -1,9 +1,9 @@
-package co.ucentral.CreditAplication.dtos;
+package co.ucentral.creditaplication.dtos;
 
 import lombok.Data;
 
 @Data
 public class CustomerLoginDto {
-    public String username;
-    public String password;
+    private String username;
+    private String password;
 }

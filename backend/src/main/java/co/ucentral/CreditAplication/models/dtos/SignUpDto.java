@@ -1,6 +1,6 @@
-package co.ucentral.CreditAplication.models.dtos;
+package co.ucentral.creditaplication.models.dtos;
 
-import co.ucentral.CreditAplication.models.enums.UserRole;
+import co.ucentral.creditaplication.models.enums.UserRole;
 
 public record SignUpDto(
         String login,
