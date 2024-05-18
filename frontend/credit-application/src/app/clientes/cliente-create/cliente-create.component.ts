@@ -146,6 +146,7 @@ export class ClienteCreateComponent {
     this.credit.cliente = this.cliente;
     this.client.saveCredit(this.credit).subscribe(res => {
       this._snackBar.open("Su solicitud a sido recibida, en los proximos dias recibira mas informacion sobre la peticion", "Ok");
+      this.router.navigate(["/login-cliente"]);
     });
   }
 
