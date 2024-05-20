@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Client } from '../Modelos/Client';
 import { Credit } from '../Modelos/Credit';
 import { CreditChangeStatusDto } from '../Modelos/CreditChangeStatusDto';
-import { Login } from '../Modelos/login';
+import { Login } from '../Modelos/Login';
 import { environment } from '../../environments/environment';
 import { Pagos } from '../Modelos/Pagos';
 import { PagosInfoByCliente } from '../Modelos/PagosInfoByCliente';
