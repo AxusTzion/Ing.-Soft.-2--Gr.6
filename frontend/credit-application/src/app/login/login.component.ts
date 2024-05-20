@@ -19,9 +19,9 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import { Router, RouterModule } from '@angular/router';
 import {MatCardModule} from '@angular/material/card';
 import { ServiceCreditApplicationService } from '../service/service-credit-application.service';
-import { Login } from '../Modelos/login';
 import { AuthService } from '../service/auth.service';
 import { rolesDto } from '../Modelos/rolesDto';
+import { Login } from '../Modelos/Login';
 
 @Component({
   selector: 'app-login',
