@@ -1,4 +1,4 @@
-package co.ucentral.CreditAplication;
+package co.ucentral.creditaplication;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

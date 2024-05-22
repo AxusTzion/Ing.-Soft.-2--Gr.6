@@ -23,7 +23,7 @@ public class Pagos {
     private Double cantidad;
     @ManyToOne
     @JoinColumn(name="PAG_CREDITO_ID", nullable=true)
-    private Credito credito;
+    private co.ucentral.creditaplication.models.Credito credito;
     @Column(name = "PAG_FECHA_PAGO", nullable = true)
     private Date fechaPago;
 
