@@ -47,6 +47,7 @@ import { Login } from '../Modelos/Login';
 })
 export class LoginComponent {
   login = new Login();
+  hide=true;
   form: FormGroup = new FormGroup({
     username: new FormControl(''),
     password: new FormControl(''),

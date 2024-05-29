@@ -12,9 +12,12 @@
 
       <p>
         <mat-form-field *ngIf="isAdminLogin">
-          <input type="text" matInput placeholder="Contraseña"
-                 [(ngModel)] = "login.password"
-                 formControlName="password">
+          <mat-label>Contraseña</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'"  formControlName="password" placeholder="Contraseña"
+                 name="password"   value=""  [(ngModel)] = "login.password">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
         </mat-form-field>
       </p>
 

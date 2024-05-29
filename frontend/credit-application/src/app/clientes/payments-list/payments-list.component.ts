@@ -37,7 +37,7 @@ export class PaymentsListComponent {
       if(res && res.fechaPago) {
         var date = new Date(res.fechaPago);
         var fechaActual = new Date();
-        if (fechaActual.getMonth() != date.getMonth()) {
+        if (fechaActual < date) {
           this.pagoMinimoActive = false;
         }
       }
