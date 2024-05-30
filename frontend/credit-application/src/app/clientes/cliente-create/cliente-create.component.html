@@ -144,7 +144,7 @@
     <p>Seleccione la opcion de Solicitar para empezar con su solicitud.</p>
     <div>
       <button mat-button matStepperPrevious>Atras</button>
-      <button mat-button (click)="createCliente()">Solicitar</button>
+      <button mat-button (click)="createCliente()" [disabled]="createButtonState">Solicitar</button>
     </div>
   </mat-step>
 </mat-stepper>
